@@ -1,0 +1,825 @@
+/* Normalize */
+*, *:after, *:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+    
+  }
+
+
+
+.body_full{
+    background: #f2f2f2;
+    
+  }
+  
+  .Music_Event{
+    position:absolute;
+    width: 50%;
+    top: 25%;    
+    color: #ffffff;
+    left: 10%;
+ 
+    h1{
+        line-height: 60px;
+        font-weight: 700;
+        margin-bottom: 4%;
+    }
+    p{    font-weight: 400;
+        font-size: 20px;
+        line-height: 44px;}
+  }
+  
+
+  
+
+//------------------------About---------------
+
+.card_About {
+    width:80%;
+    margin: auto;
+    // height: 300px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 1rem;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    transition:.3s ease-in-out;
+    
+    &:hover {
+      box-shadow:.3px 4px 7px rgba(0,0,0,.2);
+    }
+    
+    .img-box {
+      width: 100%;
+      height:100%;
+      border-radius: 10px;
+      
+      img {
+        width:100%;
+        height:100%;
+        border-radius: inherit;
+        object-fit:cover;
+      }
+    }
+    .content_about {
+      padding: 1rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      
+      h3 {
+        font-size: 1.1rem;
+      }
+      p {
+        font-size: .8rem;
+        color: gray;
+      }
+    }
+    
+    .about_card-action {
+      display:flex;
+      justify-content:space-between;
+      margin-top:2rem;
+      
+      .name-container {
+        display:flex;
+        gap:1rem;
+        align-items:center;
+        justify-content:center;
+        
+        .avatar {
+           width:50px;
+          height:50px;
+          border-radius: 50%;
+          outline-width: 1px;
+          outline-color: orange;
+          outline-offset: 1px;
+          outline-style: dotted;
+        }
+        .name-box {
+          display:flex;
+          flex-direction: column;
+          
+          span {
+            font-size:.9rem;
+            font-weight:500;
+          }
+          small {
+            color:gray;
+          }
+        }
+      }
+    }
+  }
+  
+  @media screen and (max-width:800px){
+    .card {
+      margin:1rem;   
+    }
+  }
+  
+  @media screen and (max-width:600px){
+    .card {
+      grid-template-columns: 1fr;
+      margin:1rem;
+    }
+  }
+
+//   ----------------pross---------------
+
+.Proback{
+    display: grid;
+    place-items: center; /* Center the main container */
+    // background: rgb(91, 95, 151);
+    background-size: 2133.95px 1855.02px;
+    font-family: Tahoma, sans-serif;
+    line-height: 1.5;
+height: 600px;
+background-color: hsl(218, 41%, 15%);
+background-image: radial-gradient(650px circle at 0% 0%,
+    hsl(218, 41%, 35%) 15%,
+    hsl(218, 41%, 30%) 35%,
+    hsl(218, 41%, 20%) 75%,
+    hsl(218, 41%, 19%) 80%,
+    transparent 100%),
+  radial-gradient(1250px circle at 100% 100%,
+    hsl(218, 41%, 45%) 15%,
+    hsl(218, 41%, 30%) 35%,
+    hsl(218, 41%, 20%) 75%,
+    hsl(218, 41%, 19%) 80%,
+    transparent 100%);
+    // overflow: hidden;
+  }
+  .italic {
+    font-style: italic;
+  }
+.procontainer{
+    max-width: 800px;
+    width: 80%;
+    // max-height: 400px;
+    // height: 80%;
+    position: relative;
+    filter: drop-shadow(16px 16px 20px rgba(146, 191, 204, 0.4));
+}
+
+
+.procontainer {
+    max-width: 800px;
+    width: 80%;
+    color: #fff;
+    max-height: 400px;
+    height: 80%;
+    position: relative;
+    filter: drop-shadow(16px 16px 20px rgba(117, 160, 190, 0.4));
+  }
+.procontainer:before {
+        content: '';
+        // top: 50%;
+        // left: 50%;
+        transform: translate(-50%, -50%);
+        // position: absolute;
+        height: 150%;
+        width: 150%;
+        z-index: -10;
+}
+
+.procontent {
+    border-radius: 32px;
+    top: 70px; /* Leave space for the progress bar */
+    
+    position: absolute; /* Place each text container on top of each other. */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    padding: 3em;
+    display: none; /* Hide all text containers */
+    // background: linear-gradient(139deg, 
+    // rgb(91, 95, 151) 2%,
+    // rgb(110, 114, 169) 33%,
+    //   rgb(110, 114, 169) 73%,
+    //   rgb(91, 95, 151) 98%); /* Add background so when next text containers are shown, the previous one are not being seen anymore. */
+    background-color: hsl(210, 57%, 7%);
+    // background-image: radial-gradient(650px circle at 0% 0%,
+    //     hsl(218, 41%, 35%) 15%,
+    //     hsl(218, 41%, 30%) 35%,
+    //     hsl(218, 41%, 20%) 75%,
+    //     hsl(218, 41%, 19%) 80%,
+    //     transparent 100%),
+    //   radial-gradient(1250px circle at 100% 100%,
+    //     hsl(218, 41%, 45%) 15%,
+    //     hsl(218, 41%, 30%) 35%,
+    //     hsl(218, 41%, 20%) 75%,
+    //     hsl(218, 41%, 19%) 80%,
+    //     transparent 100%);
+  
+  }
+  
+  
+  .step {
+    float: left;
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 33.33%; 
+    font-weight: bold;
+  }
+  
+/* Circles referencing each step */
+.step:after {
+    content: ''; /* Content will be assign to each circle independently */
+    position: absolute;
+    width: 35px;
+    color: white;
+    font-size: 1.2em;
+      height: 35px;
+    border-radius: 50%;
+    background: none;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+    // background: rgb(110, 114, 169) ; /* Setting background so that part of the progress line is not seen */
+    transition: 0.5s ease-in-out; /* Transition for color fill */
+    border: 2px solid white;
+    // box-shadow: 8px 8px 10px rgb(136, 138, 167);
+    display: flex;
+    align-items: center; /* Center text */
+    justify-content: center;
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(218, 41%, 35%) 15%,
+        hsl(218, 41%, 30%) 35%,
+        hsl(218, 41%, 20%) 75%,
+        hsl(218, 41%, 19%) 80%,
+        transparent 100%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(218, 41%, 45%) 15%,
+        hsl(218, 41%, 30%) 35%,
+        hsl(218, 41%, 20%) 75%,
+        hsl(218, 41%, 19%) 80%,
+        transparent 100%);
+  
+  }
+  
+  .step.first:after {
+    content: '1';
+  }
+  
+  .step.second:after {
+    content: '2';
+  }
+  
+  .step.third:after {
+    content: '3';
+  }
+  
+  /* Progress bar, before each step circle */
+  .step:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    right: 50%;
+    transform: translateY(-50%);
+    height: 7px;
+    border: 2px solid white;
+    // box-shadow: 8px 8px 10px rgba(146, 188, 223, 0.4);
+    transition: 0.1s ease-in-out;
+  }
+  
+  /* Hide the progress bar before the first step circle */
+  .step.first:before {
+    display: none;
+  }
+  
+  /* Each "button" */
+  label {
+    background: #5b5f97;
+    color: white;
+    padding: 0.5em 1.75em;
+    position: absolute;
+    right: 4em;
+    bottom: 2em;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    border-radius: 8px;
+    user-select: none; /* Just so the text can't be seleted. Not needed. */
+       -webkit-user-select: none; /* Just so the text can't be seleted. Not needed. */
+  }
+  
+  label:hover {
+    background: rgb(153, 207, 241);
+    // box-shadow: 10px 10px 10px rgba(136, 174, 186, 0.4);
+    bottom: calc(2em + 2px);
+    right: calc(4em + 2px);
+  }
+  
+  /* Hide all checkboxes. They are not needed since they can be checked with the labels. */
+  input[name="toggler"] {
+    display: none;
+  }
+  
+  /* Show the (.content) placed immediately after a checked checkbox. */
+  input[name="toggler"]:checked + .content {
+       display: flex;
+  }
+  
+  /* Change the background and color of the step circle located right after a checked checkbox and (.content). */
+  
+  input[name='toggler']:checked + .content + .step:after {
+       background: white;
+       color: rgb(101, 169, 218);
+  }
+  
+  /* Change the background and color of the progress bar located right after a checked checkbox and (.content). */
+  input[name='toggler']:checked + .content + .step:before {
+       background: white;
+  }
+  
+  /* Change color of each step circles after a NOT selected checkbox. */
+  input:not(:checked) + .step {
+       color: white;
+  }
+  
+  /* Change the background and color of the step circle located right after a NOT checked checkbox. */
+  input:not(:checked) + .step:after {
+       border-color: white;
+       color: white;
+  }
+  
+  input[type="reset"] {
+    align-self: flex-end;
+    background: #5b5f97;
+    color: white;
+    padding: 0.75em 2em;
+    position: absolute;
+    right: 4em;
+    bottom: 2em;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    border-radius: 8px;
+    user-select: none; /* So the text can't be seleted. Not needed. */
+       -webkit-user-select: none; /* So the text can't be seleted. Not needed. */
+    border: none;
+    font-size: 1rem;
+  }
+  
+  input[type="reset"]:hover {
+    background:rgb(101, 169, 218);
+    // box-shadow: 10px 10px 10px rgba(01, 169, 218, 0.4);
+    bottom: calc(2em + 2px);
+    right: calc(4em + 2px);
+  }
+  
+ 
+  //--------------servies---------------
+.servies h1{
+color: #000000;
+}
+  .card-hover-over .card {
+    height:400px;
+      overflow:hidden;
+    text-align:center;
+    line-height:normal;
+    margin:10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  }
+  
+  .card-hover-over .card {
+    height:400px;
+    
+  }
+  
+  .card-hover-over img{
+    min-height:100%;
+   object-fit: cover;
+  }
+  
+  
+  .card-hover-over .card-body{
+    position:relative;
+    width:100%;
+    padding:345px 10%;
+    //  transition: padding.5s;
+    transition: padding 0.5s ;
+  }
+  
+  .card-hover-over .card-body:hover{
+    position:relative;
+    padding:100px 10%;
+    height:400px;
+  }
+  .card-hover-over .card-text {
+    font-style:italic;
+    font-family:serif;
+  }
+  
+  
+  
+  .card-hover-over .card-img-overlay{
+    background:#000000aa;
+    
+  
+  }
+  
+  .card-hover-over  {
+    color:white;
+  }
+  
+  a.btn {
+      background:#00000d;
+    padding:10px 20px;
+    color:white;
+    border:solid white 1px;
+  
+     transition-timing-function: ease-in;
+     transition-timing-function: ease-out;
+    transition: 0.5s;
+    
+  }
+  
+  a.btn:hover {
+    background:#d3d3d36b;
+  color:white;
+    padding:10px 20px;
+  } 
+
+  //----------------------------------------
+  .VEHICLE {
+    width: 1200px;
+    min-height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+  }
+  .VEHICLE_card {
+    position: relative;
+    width: calc(50% - 20px);
+    min-height: 300px;
+    background: #fff;
+    margin: 10px;
+    box-sizing: border-box;
+  }
+  .VEHICLE_card .imgBx {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+  }
+  .VEHICLE_card .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .VEHICLE_card .details {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .VEHICLE_card .details .content {
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .VEHICLE_card .details .content h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    line-height: 0.85em;
+    font-weight: 600;
+  }
+  .VEHICLE_card .details .content h2 span {
+    font-size: 14px;
+    color: #777;
+  }
+  .VEHICLE_card .details .content ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  .VEHICLE_card .details .content ul li {
+    list-style: none;
+    margin-left: 2px;
+  }
+  .VEHICLE_card .details .content ul li a {
+    color: #fff;
+    border: none;
+  }
+  .VEHICLE_card .details .content ul li:nth-child(1) a {
+    background: #3b5995;
+  }
+  .VEHICLE_card .details .content ul li:nth-child(2) a {
+    background: #55acee;
+  }
+  .VEHICLE_card .details .content ul li:nth-child(3) a {
+    background: #b31217;
+  }
+  .VEHICLE_card .details .content ul li:nth-child(4) a {
+    background: #0077b5;
+  }
+  .VEHICLE_card .details .content a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border: 2px solid #262626;
+    color: #262626;
+    font-weight: 500;
+  }
+  .VEHICLE_card .details .content a:hover {
+    background: #262626;
+    color: #fff;
+  }
+  
+  //---------------------------------------
+  	
+
+// -------------------------------
+.shell{
+    padding:80px 0;
+    
+  }
+  .ner{
+    margin: auto;
+  }
+  .wsk-cp-product{
+    background:#fff;
+    padding:15px;
+    border-radius:6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    position:relative;
+    margin:20px auto;
+  }
+  .wsk-cp-img{
+    position:absolute;
+    top:5px;
+    left:50%;
+    transform:translate(-50%);
+    -webkit-transform:translate(-50%);
+    -ms-transform:translate(-50%);
+    -moz-transform:translate(-50%);
+    -o-transform:translate(-50%);
+    -khtml-transform:translate(-50%);
+    width: 100%;
+    padding: 15px;
+    transition: all 0.2s ease-in-out;
+  }
+  .wsk-cp-img img{
+    width:100%;
+    transition: all 0.2s ease-in-out;
+    border-radius:6px;
+  }
+  .wsk-cp-product:hover .wsk-cp-img{
+    top:-40px;
+  }
+  .wsk-cp-product:hover .wsk-cp-img img{
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  }
+  .wsk-cp-text{
+    padding-top:70%;
+  }
+  .wsk-cp-text .category{
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+    padding:5px;
+    margin-bottom:45px;
+    position:relative;
+    transition: all 0.2s ease-in-out;
+  }
+  .wsk-cp-text .category > *{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -khtml-transform: translate(-50%,-50%);
+      
+  }
+  .wsk-cp-text .category > span{
+    padding: 12px 30px;
+    border: 1px solid #313131;
+    background:#212121;
+    color:#fff;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    border-radius:27px;
+    transition: all 0.05s ease-in-out;
+    
+  }
+  .wsk-cp-product:hover .wsk-cp-text .category > span{
+    border-color:#ddd;
+    box-shadow: none;
+    padding: 11px 28px;
+  }
+  .wsk-cp-product:hover .wsk-cp-text .category{
+    margin-top: 0px;
+  }
+  .wsk-cp-text .title-product{
+    text-align:center;
+  }
+  .wsk-cp-text .title-product h3{
+    font-size:20px;
+    font-weight:bold;
+    margin:15px auto;
+    overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    width:100%;
+  }
+  .wsk-cp-text .description-prod p{
+    margin:0;
+  }
+  /* Truncate */
+  .wsk-cp-text .description-prod {
+    text-align:center;
+    width: 100%;
+    height:62px;
+    overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    margin-bottom:15px;
+  }
+  .card-footer{
+    padding: 25px 0 5px;
+    border-top: 1px solid #ddd;
+  }
+  .card-footer:after, .card-footer:before{
+    content:'';
+    display:table;
+  }
+  .card-footer:after{
+    clear:both;
+  }
+  
+  .card-footer .wcf-left{
+    float:left;
+    
+  }
+  
+  .card-footer .wcf-right{
+    float:right;
+  }
+  
+  .price{
+    font-size:18px;
+    font-weight:bold;
+  }
+  
+  a.buy-btn{
+    display:block;
+    color:#212121;
+    text-align:center;
+    font-size: 18px;
+    width:35px;
+    height:35px;
+    line-height:35px;
+    border-radius:50%;
+    border:1px solid #212121;
+    transition: all 0.2s ease-in-out;
+  }
+  a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
+    border-color: #FF9800;
+    background: #FF9800;
+    color: #fff;
+    text-decoration:none;
+  }
+  .wsk-btn{
+    display:inline-block;
+    color:#212121;
+    text-align:center;
+    font-size: 18px;
+    transition: all 0.2s ease-in-out;
+    border-color: #FF9800;
+    background: #FF9800;
+    padding:12px 30px;
+    border-radius:27px;
+    margin: 0 5px;
+  }
+  .wsk-btn:hover, .wsk-btn:focus, .wsk-btn:active{
+    text-decoration:none;
+    color:#fff;
+  }  
+  .red{
+    color:#F44336;
+    font-size:22px;
+    display:inline-block;
+    margin: 0 5px;
+  }
+  @media screen and (max-width: 991px) {
+    .wsk-cp-product{
+      margin:40px auto;
+    }
+    .wsk-cp-product .wsk-cp-img{
+    top:-40px;
+  }
+  .wsk-cp-product .wsk-cp-img img{
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  }
+    .wsk-cp-product .wsk-cp-text .category > span{
+    border-color:#ddd;
+    box-shadow: none;
+    padding: 11px 28px;
+  }
+  .wsk-cp-product .wsk-cp-text .category{
+    margin-top: 0px;
+  }
+  a.buy-btn{
+    border-color: #FF9800;
+    background: #FF9800;
+    color: #fff;
+  }
+  }
+
+  //------------------------
+
+
+  @media (max-width: 1200px) {
+    .container {
+      width: 100%;
+    }
+  }
+  @media (max-width: 991px) {
+    .VEHICLE_card {
+      width: calc(70% - 20px);
+      margin: 10px auto;
+    }
+  }
+  @media (max-width: 768px) {
+    .VEHICLE_card {
+      width: calc(70% - 20px);
+      margin: 10px auto;
+    }
+    .VEHICLE_card .imgBx {
+      position: relative;
+      width: 100%;
+      height: 200px;
+    }
+    .VEHICLE_card .details {
+      position: relative;
+      width: 100%;
+      height: 200px;
+    }
+  }
+  @media (max-width: 480px) {
+    .VEHICLE_card {
+      width: calc(100% - 40px);
+      margin: 10px auto;
+    }
+  }
+
+  @media (max-width: 780px) {
+    .container {
+      max-height: 500px;
+    }
+    .Music_Event h1 {
+      line-height: 37px;
+      font-weight: 500;
+      margin-bottom: 0%;
+  }
+ 
+      .Music_Event p {
+        font-size: 15px;
+        line-height: 25px;
+    }
+    
+  }
+  
+  @media (max-width: 600px) {
+    .container {
+      max-height: 550px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .container {
+      max-height: 600px;
+    }
+  }
+  
+  @media (max-width: 550px) {
+    .container {
+      max-height: 800px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .container {
+      max-height: 900px;
+    }
+  }

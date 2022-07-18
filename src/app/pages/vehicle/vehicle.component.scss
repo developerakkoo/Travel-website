@@ -1,0 +1,93 @@
+// .logo-image {
+//     box-shadow: 1px 5px 12px rgba($color: #6e6d6d, $alpha: 1) !important;
+ 
+// }
+
+// .Next{    padding: 1% 5%;
+//     color: #fff;
+//     font-weight: 500;
+//     background-color: #21AD4B;
+//     margin-top: 1.5rem;
+//     border: none;
+
+// }
+.cardss{
+  background: none;
+  border: 1px solid #fff;
+}
+.Next {
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+}
+
+.Next {  
+  color: var(--color);
+  transition: 0.25s;
+  
+  &:hover,
+  &:focus { 
+    border-color: var(--hover);
+    color: #fff;
+  }
+}
+
+.grey-bg {  
+    background-color: #F5F7FA;
+}
+
+input[type="radio"]
+{
+  appearance: none;
+}
+
+input[type="radio"] + label
+{
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  line-height: 20px;
+}
+
+input[type="radio"] + label::before
+{
+  content: "";
+  display: inline-block;
+  width: 20px;
+  aspect-ratio: 1;
+  border: 1px solid #686de0;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+input[type="radio"] + label::after
+{
+  content: "";
+  display: inline-block;
+  width: 10px;
+  aspect-ratio: 1;
+  border: 1px solid #686de0;
+  background: #686de0;
+  border-radius: 50%;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+input[type="radio"]:checked + label::after
+{
+  opacity: 1;
+}
+
+

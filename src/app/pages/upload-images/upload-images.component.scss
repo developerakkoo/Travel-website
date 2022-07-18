@@ -1,0 +1,111 @@
+// .logo-image {
+//     box-shadow: 1px 5px 12px rgba($color: #6e6d6d, $alpha: 1) !important;
+// }
+
+// .Next{padding: 3% 12%;
+//     color: #fff;
+//     font-weight: 500;
+//     background-color: #21AD4B;
+//     margin-top: 1.5rem;
+//     border: none;
+
+// }
+
+.gropu-form {
+    display: block;
+    margin-bottom: 15px;
+  }
+  
+  .gropu-form input {
+    padding: 0;
+    height: initial;
+    width: initial;
+    margin-bottom: 0;
+    display: none;
+    cursor: pointer;
+  }
+  
+  .gropu-form label {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .gropu-form label:before {
+    content:'';
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .gropu-form input:checked + label:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 9px;
+    width: 6px;
+    height: 14px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .background-radial-gradient {
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(218, 41%, 35%) 15%,
+        hsl(218, 41%, 30%) 35%,
+        hsl(218, 41%, 20%) 75%,
+        hsl(218, 41%, 19%) 80%,
+        transparent 100%),
+        
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(218, 41%, 45%) 15%,
+        hsl(218, 41%, 30%) 35%,
+        hsl(218, 41%, 20%) 75%,
+        hsl(218, 41%, 19%) 80%,
+        transparent 100%);
+        height: 100vh;
+        color: #fff;
+
+
+  }
+
+  .logo-image {
+    color: #fff;
+    margin-right: auto;
+    margin-left: auto;
+  
+    // box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+  
+    border-radius: 10px;
+    backdrop-filter: blur(14px);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .Next {
+    background: none;
+    border: 2px solid;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+  }
+  
+  .Next {  
+    color: var(--color);
+    transition: 0.25s;
+    
+    &:hover,
+    &:focus { 
+      border-color: var(--hover);
+      color: #fff;
+    }
+  }
+  

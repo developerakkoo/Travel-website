@@ -1,0 +1,63 @@
+.navbar {
+    padding:0rem;
+    
+  }
+  
+  .dropdown .dropdown-menu {
+    border-radius:0;
+   }
+  // .Nav{
+  //   background-color: #5b5f97;
+  //       font-size: 17px;
+   
+  // }
+
+  .Nav {
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(218, 41%, 35%) 15%,
+        hsl(218, 41%, 30%) 35%,
+        hsl(218, 41%, 20%) 75%,
+        hsl(218, 41%, 19%) 80%,
+        transparent 100%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(218, 41%, 45%) 15%,
+        hsl(218, 41%, 30%) 35%,
+        hsl(218, 41%, 20%) 75%,
+        hsl(218, 41%, 19%) 80%,
+        transparent 100%);
+  }
+.nav_item{
+  margin-left: 30px;
+}
+  .Nav a{
+    color: #ffff;
+  }
+  .tbut{
+    color: #ffff;
+    background-color: #ffff;
+  }
+  
+  /* Medium devices (tablets, 768px and up) 
+  The navbar toggle appears at this breakpoint */
+  @media (min-width: 768px) {  
+  .dropdown:hover .dropdown-menu {
+      display: block;
+      margin-top: 0;
+    border-radius:0;
+   }
+ 
+  }
+
+  @media (min-width: 768px) and (max-width:800px) {
+    .nav_item{
+      margin-left: none;
+      font-size: 7px;
+    }
+  }
+  @media(min-width:804px)and (max-width: 1064px) {
+    .nav_item{
+      margin-left: none  !important; 
+      font-size: 7px;
+    }
+  }

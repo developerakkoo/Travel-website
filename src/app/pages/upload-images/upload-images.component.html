@@ -1,0 +1,83 @@
+<section class="background-radial-gradient">
+    <div class="container-fluid box">
+      <div class="row d-flex justify-content-center">
+        <div class="d-flex justify-content-center Login_rows">
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="py-4">
+            <h1 class="text-center">Bulky Goods</h1>
+             <h5 class="text-center">Upload images of Goods/Item</h5>
+            </div>
+            <div class="card logo-image p-3">
+              
+              <div class="card-body">
+                <div class="Border_over">
+                    <form [formGroup]="myForm" (ngSubmit)="submit()">
+          
+                       
+                        
+
+
+                        <div class="form-row">
+                            <div class=" form-group  col-3">  <label for="file">Images 1</label></div>
+                           
+                            <div class=" form-group col-9">
+                            <input
+                                formControlName="file"
+                                id="file"
+                                type="file"
+                                class="form-control"
+                                multiple=""
+                                (change)="onFileChange($event)">
+                                </div>
+                            
+                        </div>
+                        <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                            <div *ngIf="f.file.errors && f.file.errors.required">File is required.</div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class=" form-group  col-3">  <label for="file">Images 2</label></div>
+                           
+                            <div class=" form-group col-9">
+                            <input
+                                formControlName="file"
+                                id="file"
+                                type="file"
+                                class="form-control"
+                                multiple=""
+                                (change)="onFileChange($event)">
+                                </div>
+                            
+                        </div>
+                 
+                        <img *ngFor='let url of images'  [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
+                            
+                    <div>
+                        <div class="form-group gropu-form">
+                            <input type="checkbox" id="html">
+                            <label for="html">Hellper Required</label>
+                          </div>
+                          <div class="form-group gropu-form">
+                            <input type="checkbox" id="css">
+                            <label for="css">Packing</label>
+                          </div>
+                            
+                    </div>
+                    </form>
+                    
+                </div>
+  
+                <div class="justify-content-around d-flex">
+                    <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" routerLink="../our-services" >Back</button>
+                    <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" routerLink="../vehicle" >Next</button>
+                  <!-- <a class="Forget_psd px-2" routerLink="/auth/registration">Next </a> -->
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
