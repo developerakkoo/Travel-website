@@ -33,7 +33,6 @@
             "styles": [
               "node_modules/font-awesome/css/font-awesome.min.css",
               "src/styles.scss"
-           
             ],
             "scripts": []
           },
@@ -104,6 +103,16 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "prototype:build:production",
+            "firebaseProject": "travel-project-7116a",
+            "firebaseHostingSite": "travel-project-7116a"
           }
         }
       }

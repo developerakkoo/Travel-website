@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "travel-project-7116a": {
+      "hosting": {
+        "prototype": [
+          "travel-project-7116a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "travel-project-7116a"
+  }
+}
