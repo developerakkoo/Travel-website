@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Database, set, ref } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { FirebaseService } from 'src/app/firebase.service';
@@ -16,15 +16,18 @@ export class SignupComponent implements OnInit {
   customrForm:any=FormGroup;
   agentForm:any=FormGroup;
   submitted = false;
-  
+  constructor(private formBuilder: FormBuilder, public database: Database,public fs:FirebaseService) {}
 
+  //  Vehicles: Array<any> = [
+  //   {"key": 'Wheeler-Auto',"value": 'Wheeler-Auto'},
+  //   {"key": 'Wheeler-Cargo', "value": 'Wheeler-Cargo'},
+  //   {"key": 'Wheeler-Light', "value": 'Wheeler-Light'},
+  //   {"key": 'Wheeler-Medium', "value": 'Wheeler-Medium'},
+  //   {"key": 'Wheeler-Heavy', "value": 'Wheeler-Heavy'},
+  //   {"key": 'Wheeler-Van', "value": 'Wheeler-Van'}
+  //  ];
 
-
-  constructor(private formBuilder: FormBuilder, public database: Database,public fs:FirebaseService) {
-   
-   }
-
-   
+  result:string = '';
 
   ngOnInit(): void {
     this.customrForm = this.formBuilder.group({
@@ -51,7 +54,15 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       mobile: ['', Validators.required, ],
       Vehicle:['',Validators.required],
-      acceptTerms: [false, Validators.requiredTrue]
+      Vehiclenum:['',Validators.required],
+      acceptTerms: [false, Validators.requiredTrue],
+      'auto':false,
+      'cargo':false,
+      'light':false,
+      'medium':false,
+      'heavy':false,
+      'van':false
+      
   });
 
   this.companyForm = this.formBuilder.group({
@@ -109,13 +120,13 @@ export class SignupComponent implements OnInit {
       }
       // display form values on success
       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.customrForm.value, null, 4))
-      this.fs.showData(this.customrForm).subscribe(
-        (res)=> console.log(res),
-        (err)=> console.log(err)
-        
-        
-      )
-    } 
+      this.fs.showData(this.customrForm).subscribe(e=>{
+        console.log(e);
+      },(error =>{
+        console.log(error);      
+      })
+      ) 
+    }
 
 
 
@@ -129,6 +140,8 @@ export class SignupComponent implements OnInit {
       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.vehicleOwnerForm.value, null, 4));
     }
 
+
+
     onSubmitss(){
       this.submitted = true;
       console.log(this.companyForm.value);
@@ -137,6 +150,8 @@ export class SignupComponent implements OnInit {
       }
       alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.companyForm.value, null, 4));      
     }
+
+
 
     onSubmitsss(){
       this.submitted = true;

@@ -1,0 +1,202 @@
+<section class="background-radial-gradient overflow-hidden">
+    <div class="row d-flex justify-content-center">
+        <div class="d-flex justify-content-center Login_rows">
+            <div class="d-flex">
+                <div class="text-center font_logi mt-4 my-3 ">
+                    <h2 class="Signup_font my-4" routerLink="/login"  style="color:#ffff;"> Sign in </h2>
+                </div>
+                <div class="text-center font_logi mt-4 my-3" style="margin-left: 20px;">
+                    <h2 class="Login_font my-4" routerLink="/signup" style="color:#ffff;"> Sign up</h2>
+                </div>
+            </div>
+        </div>      
+    </div>
+    <div class="container-fluid px-4 py-2 px-md-5 text-center text-lg-start my-2">
+        <div class="row  row d-flex justify-content-center gx-lg-5 align-items-center mb-5">
+      
+            <div class="col-lg-8 mb-8 mb-lg-0 ">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                <div class="card ">
+                    <div class="card-body px-4 py-5 px-md-5">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                    aria-controls="home" aria-selected="true">Customer </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                    aria-controls="profile" aria-selected="false">Vehicle Owner</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                                    aria-controls="contact" aria-selected="false">Transport
+                                    Company</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="agent-tab" data-toggle="tab" href="#agent" role="tab"
+                                    aria-controls="agent" aria-selected="false">Agent</a>
+                            </li>
+                        </ul>
+                        <!----------------------------Customer ----------------------->
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <form [formGroup]="customrForm">
+                                    <div class="form-row my-3">
+                                        <div class="form-group col">
+                                            <label class="label">Email</label>
+                                            <input id="email" type="text" formControlName="email"
+                                                class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                                <div *ngIf="f.passworderrors.required">Email is required</div>
+                                                <div *ngIf="f.email.errors.email">Email must be a valid email
+                                                    address</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 <div class="form-row my -3">
+                                    <div class="form-group col">
+                                        <label class="label">Password</label>
+                                        <input id="password" type="text" formControlName="password"
+                                            class="form-control control-form"
+                                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                            <div *ngIf="f.password.errors.required">Password is required</div>
+                                            <div *ngIf="f.password.errors.password">Password must be a valid email
+                                                address</div>
+                                        </div>
+                                    </div>
+                                 </div>
+                                    <div class="justify-content-center d-flex py-3 ">
+                                        <button class=" Next btn-lg mr-3" id="btton" mat-raised-button color="primary"
+                                            routerLink="../home">Back</button>
+                                        <button class=" Next btn-lg" id="btton" mat-raised-button color="primary"
+                                            type="submit" routerLink="../our-services"
+                                            (click)="onSubmit()">Login</button>
+                                        <!-- routerLink="../our-services" -->
+                                    </div>
+                                </form>
+                            </div>
+
+                                   
+                            <!-----------------------------Vehicle Owner----------------------------->
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <form [formGroup]="vehicleOwnerForm">                
+                                    <div class="form-row my-3">
+                                        <div class="form-group col">
+                                            <label class="label">Email</label>
+                                            <input type="text" formControlName="email" class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && v.email.errors }" />
+                                            <div *ngIf="submitted && v.email.errors" class="invalid-feedback">
+                                                <div *ngIf="v.email.errors.required">Email is required</div>
+                                                <div *ngIf="v.email.errors.email">Email must be a valid email
+                                                    address</div>
+                                            </div>
+                                        </div>                                  
+                                    </div>
+                                    <div class="form-row my-3">
+                                        <div class="form-group col">
+                                            <label class="label">Password</label>
+                                            <input type="text" formControlName="pasword" class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && v.pasword.errors }" />
+                                            <div *ngIf="submitted && v.pasword.errors" class="invalid-feedback">
+                                                <div *ngIf="v.pasword.errors.required">pasword is required</div>
+                                                <div *ngIf="v.pasword.errors.pasword">Email must be a valid email
+                                                    address</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  <div class="justify-content-center d-flex py-3 ">
+                                        <button class=" Next btn-lg mr-3" id="btton" mat-raised-button color="primary"
+                                            routerLink="../home">Back</button>
+                                        <button class=" Next btn-lg" id="btton" mat-raised-button color="primary"
+                                            (click)="onSubmits()" routerLink="../our-services">Login</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <!---------------------------Transport Company-------------------------------->
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                <form [formGroup]="companyForm">                          
+                                    <div class="form-row my-3">
+                                        <div class="form-group col">
+                                            <label class="label">Email</label>
+                                            <input type="text" formControlName="email" class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && c.email.errors }" />
+                                            <div *ngIf="submitted && c.email.errors" class="invalid-feedback">
+                                                <div *ngIf="c.email.errors.required">Email is required</div>
+                                                <div *ngIf="c.email.errors.email">Email must be a valid email
+                                                    address</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row my-3">
+                                        <div class="form-group col">
+                                            <label class="label">Password</label>
+                                            <input type="text" formControlName="password" class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && c.password.errors }" />
+                                            <div *ngIf="submitted && c.password.errors" class="invalid-feedback">
+                                                <div *ngIf="c.password.errors.required">password is required</div>
+                                                <div *ngIf="c.password.errors.password">password must be a valid email
+                                                    address</div>
+                                            </div>
+                                        </div>
+                                    </div>                              
+                                    <div class="justify-content-center d-flex py-3 ">
+                                        <button class=" Next btn-lg mr-3" id="btton" mat-raised-button color="primary"
+                                            routerLink="../home">Back</button>
+                                        <button class=" Next btn-lg" id="btton" mat-raised-button color="primary"
+                                            routerLink="../our-services" (click)="onSubmitss()">Login</button>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!--------------------------------Agent---------------------------------->
+
+                            <div class="tab-pane fade" id="agent" role="tabpanel" aria-labelledby="agent-tab">
+                                <form [formGroup]="agentForm">
+                                    <div class="form-row my-3">
+                                        <div class="form-group col">
+                                            <label class="label">Email</label>
+                                            <input type="text" formControlName="email" class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && a.email.errors }" />
+                                            <div *ngIf="submitted && a.email.errors" class="invalid-feedback">
+                                                <div *ngIf="a.email.errors.required">Email is required</div>
+                                                <div *ngIf="a.email.errors.email">Email must be a valid email
+                                                    address</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row my-3">
+                                        <div class="form-group col">
+                                            <label class="label">Password</label>
+                                            <input type="text" formControlName="password" class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && a.password.errors }" />
+                                            <div *ngIf="submitted && a.password.errors" class="invalid-feedback">
+                                                <div *ngIf="a.password.errors.required">password is required</div>
+                                                <div *ngIf="a.password.errors.password">Email must be a valid email
+                                                    address</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="justify-content-center d-flex py-3 ">
+                                        <button class="btn-2 Next btn-lg mr-3" id="btton" mat-raised-button
+                                            color="primary" routerLink="../home">Back</button>
+                                        <button class=" Next btn-lg" id="btton" mat-raised-button color="primary"
+                                            routerLink="../our-services" (click)="onSubmitsss()">Login</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

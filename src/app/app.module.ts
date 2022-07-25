@@ -31,6 +31,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     ApprovedComponent,
     OrderConfirmatonComponent,
     BillingSumaryComponent,
-    BillingSumaryAjentComponent
+    BillingSumaryAjentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

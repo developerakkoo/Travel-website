@@ -15,12 +15,13 @@ import { ApprovedComponent } from './pages/approved/approved.component';
 import { OrderConfirmatonComponent } from './pages/order-confirmaton/order-confirmaton.component';
 import { BillingSumaryComponent } from './pages/billing-sumary/billing-sumary.component';
 import { BillingSumaryAjentComponent } from './pages/billing-sumary-ajent/billing-sumary-ajent.component';
+import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   {
     path:'',component:HomeComponent,
   },
-  
   { path:'signup',component:SignupComponent},
+  { path:'login',component:LoginComponent},
   {
     path:'our-services',component:OurServicesComponent
   },
@@ -41,7 +42,6 @@ const routes: Routes = [
   },
   {
     path:'quotations',component:QuotationsComponent
-
   },
   {
     path:'enquiry',component:EnquiryComponent
@@ -60,7 +60,7 @@ const routes: Routes = [
   },
   {
     path:'billing-sumary-ajent',component:BillingSumaryAjentComponent
-  }
+  },
  
 ];
 
