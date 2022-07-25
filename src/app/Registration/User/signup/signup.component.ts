@@ -62,7 +62,6 @@ export class SignupComponent implements OnInit {
       'medium':false,
       'heavy':false,
       'van':false
-      
   });
 
   this.companyForm = this.formBuilder.group({
