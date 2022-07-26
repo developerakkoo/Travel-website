@@ -30,32 +30,32 @@
                           <tr>
                             <th  scope="row">1</th>
                             <td>Mobile </td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
+                            <td><input [value]="user.Alternate" type="text" class="Input"></td>
+                            <td><input [(ngModel)]="mobile" type="text" class="Input"></td>
                           </tr>
                           <tr>
                             <th scope="row">2</th>
                             <td>Name</td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
+                            <td><input [value]="user.initials" type="text" class="Input"></td>
+                            <td><input  [(ngModel)]="name"  type="text" class="Input"></td>
                           </tr>
                           <tr>
                             <th scope="row">3</th>
                             <td>City</td>
-                            <td><input type="text" class="Input"> </td>
-                            <td><input type="text" class="Input"></td>
+                            <td><input [value]="user.title" type="text" class="Input"> </td>
+                            <td><input [(ngModel)]="city" type="text" class="Input"></td>
                           </tr>
                           <tr>
                             <th scope="row">4</th>
                             <td>Building Name/Apartment/Lane No </td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
+                            <td><input [value]="user.address" type="text" class="Input"></td>
+                            <td><input [(ngModel)]="address" type="text" class="Input"></td>
                           </tr>
                           <tr>
                             <th scope="row">5</th>
                             <td>Door No /Flat No</td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
+                            <td><input [value]="user.flat" type="text" class="Input"></td>
+                            <td><input [(ngModel)]="flat" type="text" class="Input"></td>
                           </tr>
                         </tbody>
                       </table>
@@ -67,7 +67,8 @@
               </div>
               <div class="justify-content-center d-flex py-3 ">
                 <button class=" Next btn-lg mr-3" id="btton" mat-raised-button color="primary" routerLink="../vehicle" >Back</button>
-                <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" routerLink="../vehicle-required" >Next</button>
+                <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" (click)="SubmitData()" >Next</button>
+                <!-- routerLink="../vehicle-required" -->
               <!-- <a class="Forget_psd px-2" routerLink="/auth/registration">Next </a> -->
             
             </div>

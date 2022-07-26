@@ -1,4 +1,4 @@
-import { AngularFireDatabase, AngularFireObject } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/compat/database';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,49 +11,46 @@ import { Observable } from 'rxjs';
 export class OurServicesComponent implements OnInit {
  
   userId;
-  userRef!:AngularFireObject<any>;
-  user!: Observable<any>;
+  orderRef!:AngularFireList<any>;
+  order!: Observable<any>;
 
   masterSelected:boolean;
   checklist:any;
   checkedList:any;
+
+  isSelectVehicleForMeChecked:any;
+  isIWillSelectVehicleChecked:any;
+
+  isHouseHoldChecked:any;
+  isRejectedMaterialChecked:any;
+  isMaterialReworkChecked:any;
+  isScrapChecked:any;
+  isAdvertisingChecked:any;
+  isExibhitionChecked:any;
+
   constructor(
     private route: ActivatedRoute,
     private db: AngularFireDatabase
   ) { 
     this.userId = this.route.snapshot.paramMap.get("userId");
     console.log(`USerId on OurService ${this.userId}`);
-
-    this.getUserById(this.userId);
+    
     
     this.masterSelected = false;
     this.checklist = [
-      {id:1,value:'House Holder Items',isSelected:false},
-      {id:2,value:'Rejected Material',isSelected:true},
-      {id:3,value:'Material For Re-Work',isSelected:true},
-      {id:4,value:'Scrap Not For Sale',isSelected:false},
-      {id:5,value:'Advertising Materials',isSelected:false},
-      {id:6,value:'Jamir Pfannerstill',isSelected:false},
-      {id:7,value:'Exhibition Material',isSelected:false},
+      {value:'House Holder Items',isSelected:false},
+      {value:'Rejected Material',isSelected:false},
+      {value:'Material For Re-Work',isSelected:false},
+      {value:'Scrap Not For Sale',isSelected:false},
+      {value:'Advertising Materials',isSelected:false},
+      {value:'Exhibition Material',isSelected:false},
      
     ];
     this.getCheckedItemList();
     
   
   }
-  getUserById(userId:any) {
-    this.userRef = this.db.object(`Users/${this.userId}`);
-
-    this.user = this.userRef.valueChanges();
-    this.user.subscribe((user) =>{
-      console.log(user);
-
-    }, (error) =>{
-      console.log(error);
-      
-    })
-    
-  }
+ 
 
   ngOnInit(): void {
   }
@@ -84,5 +81,27 @@ getCheckedItemList(){
     this.checkedList.push(this.checklist[i]);
   }
   this.checkedList = JSON.stringify(this.checkedList);
+}
+
+next(){
+  
+  this.db.object(`order/${this.userId}`)
+  .set(this.checkedList).then((value) =>{
+    console.log(value);
+    
+  }).catch((error) =>{
+    console.log(error);
+    
+  })
+  if(this.isIWillSelectVehicleChecked == true){
+    console.log("move to slect products");
+    
+  }
+
+  if(this.isSelectVehicleForMeChecked){
+    console.log("move to select vehivle page");
+    
+  }
+
 }
 }

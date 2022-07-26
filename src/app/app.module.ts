@@ -30,6 +30,7 @@ import { BillingSumaryAjentComponent } from './pages/billing-sumary-ajent/billin
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { LoginComponent } from './login/login.component';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,10 @@ import { LoginComponent } from './login/login.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    IonicStorageModule.forRoot({
+      name: "TravelDB"
+    })
   
   ],
   providers: [

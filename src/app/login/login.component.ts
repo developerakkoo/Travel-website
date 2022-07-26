@@ -1,3 +1,4 @@
+import { DataService } from './../services/data.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
     private fs:FirebaseService,  
      private auth: AngularFireAuth,
     private db: AngularFireDatabase,
+    private data: DataService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -61,17 +63,21 @@ this.agentForm = this.formBuilder.group({
     return this.agentForm.controls;    
   }
 
-  onLoginCustomer() {
+  async onLoginCustomer() {
     this.submitted = true;
     console.log(this.customrForm.value);
     // stop here if form is invalid 
   
     // display form values on success
     this.auth.signInWithEmailAndPassword(this.customrForm.value.email, this.customrForm.value.password)
-    .then((user) =>{
+    .then(async (user) =>{
       console.log(user);
       let userId = user.user?.uid;
-      // this.router.navigate(['our-services', userId]);
+      const userKey = await this.data.set("userId", userId);
+      if(userKey){
+        this.router.navigate(['our-services', userId]);
+
+      }
       //move to next page
       
     }).catch((error) =>{
@@ -86,9 +92,11 @@ this.agentForm = this.formBuilder.group({
     this.submitted = true;
     console.log(this.vehicleOwnerForm.value);
     this.auth.signInWithEmailAndPassword(this.vehicleOwnerForm.value.email, this.vehicleOwnerForm.value.password)
-    .then((user) =>{
+    .then(async (user) =>{
       console.log(user);
       let userId = user.user?.uid;
+      const userKey = await this.data.set("userId", userId);
+
       // this.router.navigate(['our-services', userId]);
       //move to next page
       
@@ -102,9 +110,11 @@ this.agentForm = this.formBuilder.group({
     this.submitted = true;
     console.log(this.companyForm.value);
     this.auth.signInWithEmailAndPassword(this.companyForm.value.email, this.companyForm.value.password)
-    .then((user) =>{
+    .then(async (user) =>{
       console.log(user);
       let userId = user.user?.uid;
+      const userKey = await this.data.set("userId", userId);
+
       // this.router.navigate(['our-services', userId]);
       //move to next page
       
@@ -118,9 +128,11 @@ this.agentForm = this.formBuilder.group({
     this.submitted = true;
     console.log(this.agentForm.value);
     this.auth.signInWithEmailAndPassword(this.agentForm.value.email, this.agentForm.value.password)
-    .then((user) =>{
+    .then(async (user) =>{
       console.log(user);
       let userId = user.user?.uid;
+      const userKey = await this.data.set("userId", userId);
+
       // this.router.navigate(['our-services', userId]);
       //move to next page
       

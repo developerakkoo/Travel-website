@@ -35,7 +35,7 @@
                       </ul>
                       <ul class="list-group ">
                         <li class="list-group-item item">
-                          <input type="checkbox" data-top
+                          <input type="checkbox" data-top [(ngModel)]="isSelectVehicleForMeChecked"
                             (change)="checkcheckAll()"  /><strong class="checkbox-text">Select a Vehicle For me</strong>
                         </li>
                         <p class="mb-2 pt-2">(This Option Will lead to screen where customer  will upload images of goods)</p>
@@ -43,8 +43,8 @@
                       </ul>
                       <ul class="list-group ">
                         <li class="list-group-item item">
-                          <input type="checkbox" data-top
-                            (change)="checkcheckAll()"  /><strong class="checkbox-text">Goods Are Not For Sale GFS</strong>
+                          <input type="checkbox" data-top [(ngModel)]="isIWillSelectVehicleChecked"
+                            (change)="checkcheckAll()"  /><strong class="checkbox-text">I will select vehicle myself</strong>
                         </li>
                        
                         <p class="mb-2 pt-2">(This Option Will lead to screen where customer  will be Shown images of vehicles and he can select )</p>
@@ -54,7 +54,8 @@
                 </div>
   
                 <div class="justify-content-end d-flex">
-                    <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" routerLink="../upload-images" >Next</button>
+                  <!-- routerLink="../upload-images" -->
+                    <button (click)="next()" class=" Next btn-lg" id="btton" mat-raised-button color="primary"  >Next</button>
                   <!-- <a class="Forget_psd px-2" routerLink="/auth/registration">Next </a> -->
   
                 </div>
