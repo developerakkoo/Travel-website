@@ -1,4 +1,7 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../firebase.service';
 
@@ -16,7 +19,11 @@ export class LoginComponent implements OnInit {
   agentForm:any=FormGroup;
   submitted = false;
 
-  constructor(private formBuilder:FormBuilder,private fs:FirebaseService) { }
+  constructor(private formBuilder:FormBuilder,
+    private fs:FirebaseService,  
+     private auth: AngularFireAuth,
+    private db: AngularFireDatabase,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.customrForm = this.formBuilder.group({
@@ -54,16 +61,25 @@ this.agentForm = this.formBuilder.group({
     return this.agentForm.controls;    
   }
 
-  onSubmit() {
+  onLoginCustomer() {
     this.submitted = true;
     console.log(this.customrForm.value);
     // stop here if form is invalid 
-    if (this.customrForm.invalid) {
-      return;
-    }
+    // if (this.customrForm.invalid) {
+    //   return;
+    // }
     // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.customrForm.value, null, 4))
-    this.fs.showData(this.customrForm)
+    this.auth.signInWithEmailAndPassword(this.customrForm.value.email, this.customrForm.value.password)
+    .then((user) =>{
+      console.log(user);
+      let userId = user.user?.uid;
+      this.router.navigate(['our-services', userId]);
+      //move to next page
+      
+    }).catch((error) =>{
+      console.log(error);
+      
+    })
      
 
   }

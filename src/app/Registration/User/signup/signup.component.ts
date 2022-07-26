@@ -81,7 +81,7 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       mobile: ['', Validators.required, ],
-      // Vehicle:['',Validators.required],
+      Vehicle:['',Validators.required],
       Vehiclenum:['',Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
       'auto':false,
@@ -254,15 +254,19 @@ export class SignupComponent implements OnInit {
       acceptTerms: this.vehicleOwnerForm.value.acceptTerms,
       Vehiclenum: this.vehicleOwnerForm.value.Vehiclenum ,
       Vehicle: this.vehicleOwnerForm.value.Vehicle,
-      panUrl: this.panDownloadUrl,
-      adharUrl: this.adhardownloadURL,
-      driveUrl: this.driveDownloadUrl
+      // panUrl: this.panDownloadUrl,
+      // adharUrl: this.adhardownloadURL,
+      // driveUrl: this.driveDownloadUrl
         }
-        this.db.object(`VehicleOwner/${user.user?.uid}`).set(userObj).then((data) =>{
+        this.db.object(`Vehicle/${user.user?.uid}`).set(userObj).then((data) =>{
           console.log(data);
+          //SUCCES SHOW REGISTRATION CPOMPLTE DIALOG
+          //LOADER CLOSE
           
         }).catch((error) =>{
           console.log(error);
+          //LOADER CLOSE
+          //SHOW ERRROR ALERT
           
         })
 

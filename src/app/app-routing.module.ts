@@ -25,7 +25,7 @@ const routes: Routes = [
   { path:'signup',component:SignupComponent},
   { path:'login',component:LoginComponent},
   {
-    path:'our-services',component:OurServicesComponent
+    path:'our-services/:userId',component:OurServicesComponent
   },
   {
    path:'upload-images',component:UploadImagesComponent

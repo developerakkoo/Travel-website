@@ -1,4 +1,7 @@
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/compat/database';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-our-services',
@@ -7,10 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OurServicesComponent implements OnInit {
  
+  userId;
+  userRef!:AngularFireObject<any>;
+  user!: Observable<any>;
+
   masterSelected:boolean;
   checklist:any;
   checkedList:any;
-  constructor() {  this.masterSelected = false;
+  constructor(
+    private route: ActivatedRoute,
+    private db: AngularFireDatabase
+  ) { 
+    this.userId = this.route.snapshot.paramMap.get("userId");
+    console.log(`USerId on OurService ${this.userId}`);
+
+    this.getUserById(this.userId);
+    
+    this.masterSelected = false;
     this.checklist = [
       {id:1,value:'House Holder Items',isSelected:false},
       {id:2,value:'Rejected Material',isSelected:true},
@@ -21,7 +37,23 @@ export class OurServicesComponent implements OnInit {
       {id:7,value:'Exhibition Material',isSelected:false},
      
     ];
-    this.getCheckedItemList();}
+    this.getCheckedItemList();
+    
+  
+  }
+  getUserById(userId:any) {
+    this.userRef = this.db.object(`Users/${this.userId}`);
+
+    this.user = this.userRef.valueChanges();
+    this.user.subscribe((user) =>{
+      console.log(user);
+
+    }, (error) =>{
+      console.log(error);
+      
+    })
+    
+  }
 
   ngOnInit(): void {
   }
