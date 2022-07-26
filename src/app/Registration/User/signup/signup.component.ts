@@ -81,7 +81,7 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       mobile: ['', Validators.required, ],
-      Vehicle:['',Validators.required],
+      // Vehicle:['',Validators.required],
       Vehiclenum:['',Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
       'auto':false,
@@ -102,6 +102,7 @@ export class SignupComponent implements OnInit {
     address:['',Validators.required], 
     email: ['', [Validators.required, Validators.email]],
     mobile: ['', Validators.required, ],
+    password: ['', [Validators.required]],
     gst:['',Validators.required],
     acceptTerms: [false, Validators.requiredTrue]
   });
@@ -116,6 +117,7 @@ export class SignupComponent implements OnInit {
     address:['',Validators.required], 
     email: ['', [Validators.required, Validators.email]],
     mobile: ['', Validators.required, ],
+    password: ['', [Validators.required]],
     ofaddress: ['', Validators.required, ],  
     acceptTerms: [false, Validators.requiredTrue]
   });
@@ -206,8 +208,6 @@ export class SignupComponent implements OnInit {
           finalize(() => this.adhardownloadURL = fileRef.getDownloadURL() )
        )
       .subscribe()
-      
-
     }
 
     driveEvent(event: any){
@@ -280,15 +280,78 @@ export class SignupComponent implements OnInit {
     onSubmitCompany(){
       this.submitted = true;
       console.log(this.companyForm.value);
+      this.auth.createUserWithEmailAndPassword(this.companyForm.value.email, this.companyForm.value.password)
+      .then((user)=>{
+        console.log(user.user?.uid);
+
+        let userId = user.user?.uid;
+
+        let userObj = {
+          key: user.user?.uid,//To retrice with the help of key
+          email: this.companyForm.value.email,
+          password: this.companyForm.value.password,
+          title: this.companyForm.value.title,
+      dropdown: this.companyForm.value.dropdown,
+      initials: this.companyForm.value.initials,
+      lastName:this.companyForm.value.lastName,
+      Alternate:this.companyForm.value.Alternate,
+      flat:this.companyForm.value.flat,
+      address:this.companyForm.value.address, 
+      mobile: this.companyForm.value.mobile,
+      gst:this.companyForm.value.gst,
+      acceptTerms: this.companyForm.value.acceptTerms
+        }
+        this.db.object(`Company/${user.user?.uid}`).set(userObj).then((data) =>{
+          console.log(data);
+          
+        }).catch((error) =>{
+          console.log(error);
+        })
+      }).catch((error)=>{
+        console.log(error);
+      })
   
+      console.log("Submit done company");
+      
 
     }
-
 
 
     onSubmitAgent(){
       this.submitted = true;
       console.log(this.agentForm.value);
+      this.auth.createUserWithEmailAndPassword(this.agentForm.value.email, this.agentForm.value.password)
+      .then((user)=>{
+        console.log(user.user?.uid);
+
+        let userId = user.user?.uid;
+
+        let userObj = {
+          key: user.user?.uid,//To retrice with the help of key
+          email: this.agentForm.value.email,
+          password: this.agentForm.value.password,
+          title: this.agentForm.value.title,
+      dropdown: this.agentForm.value.dropdown,
+      initials: this.agentForm.value.initials,
+      lastName:this.agentForm.value.lastName,
+      Alternate:this.agentForm.value.Alternate,
+      flat:this.agentForm.value.flat,
+      address:this.agentForm.value.address, 
+      mobile: this.agentForm.value.mobile,
+      ofaddress: this.agentForm.value.ofaddress,
+      acceptTerms: this.agentForm.value.acceptTerms
+        }
+        this.db.object(`Agent/${user.user?.uid}`).set(userObj).then((data) =>{
+          console.log(data);
+          
+        }).catch((error) =>{
+          console.log(error);
+        })
+      }).catch((error)=>{
+        console.log(error);
+      })
+  
+      console.log("Submit done Agent");
      
     }
 

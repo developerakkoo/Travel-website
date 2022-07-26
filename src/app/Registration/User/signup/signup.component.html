@@ -780,7 +780,7 @@
         <div class="d-flex justify-content-center Login_rows">
             <div class="d-flex justify-content-between">
                 <div class="text-center font_logi mt-4 my-3 ">
-                    <h2 class="Signup_font my-4" routerLink="/login"  style="color:#ffff ;"> Sign up </h2>
+                    <h2 class="Signup_font my-4" routerLink="/login"  style="color:#ffff;"> Sign up </h2>
                 </div>
                 <div class="text-center font_logi mt-4 my-3" style="margin-left: 20px;">
                     <h2 class="Login_font my-4" style="color:#ffff ;"> Sign in</h2>
@@ -955,7 +955,7 @@
                                     <div class="form-row my-3">
                                         <div class="form-group col">
                                             <label class="label">Password</label>
-                                            <input id="email" type="text" formControlName="password"
+                                            <input id="email" type="password" formControlName="password"
                                                 class="form-control control-form"
                                                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
@@ -989,9 +989,9 @@
                                             <select formControlName="title" class="form-control control-form"
                                                 [ngClass]="{ 'is-invalid': submitted && v.title.errors }">
                                                 <option value=""></option>
-                                                <option value="Mr">Pune</option>
-                                                <option value="Mrs">Mumbai</option>
-                                                <option value="Miss">Bengaluru</option>
+                                                <option value="Pune">Pune</option>
+                                                <option value="Mumbai">Mumbai</option>
+                                                <option value="Bengaluru">Bengaluru</option>
                                             </select>
                                             <div *ngIf="submitted && v.title.errors" class="invalid-feedback">
                                                 <div *ngIf="v.title.errors.required">Title is required</div>
@@ -1002,9 +1002,9 @@
                                             <select formControlName="dropdown" class="form-control control-form"
                                                 [ngClass]="{ 'is-invalid': submitted && v.dropdown.errors }">
                                                 <option value=""></option>
-                                                <option value="Mr">KOTHRUD/411038</option>
-                                                <option value="Mrs">BAVDHAN/411021</option>
-                                                <option value="Miss">VARJE/411058</option>
+                                                <option value="KOTHRUD/411038">KOTHRUD/411038</option>
+                                                <option value="BAVDHAN/411021">BAVDHAN/411021</option>
+                                                <option value="VARJE/411058">VARJE/411058</option>
 
                                             </select>
                                             <div *ngIf="submitted && v.dropdown.errors" class="invalid-feedback">
@@ -1069,11 +1069,11 @@
                                     <div class="form-row my-3">
                                         <div class="form-group col">
                                             <label class="label">Flat/Door Number</label>
-                                            <input type="flat" formControlName="initials"
+                                            <input type="flat" formControlName="flat"
                                                 class="form-control control-form"
-                                                [ngClass]="{ 'is-invalid': submitted && v.initials.errors }" />
-                                            <div *ngIf="submitted && v.initials.errors" class="invalid-feedback">
-                                                <div *ngIf="v.initials.errors.required">initials is required
+                                                [ngClass]="{ 'is-invalid': submitted && v.flat.errors }" />
+                                            <div *ngIf="submitted && v.flat.errors" class="invalid-feedback">
+                                                <div *ngIf="v.flat.errors.required">initials is required
                                                 </div>
                                             </div>
                                         </div>
@@ -1083,9 +1083,9 @@
                                             <label class="label">Apartment/Housing Socitey/ Colony</label>
                                             <input type="text" formControlName="address"
                                                 class="form-control control-form"
-                                                [ngClass]="{ 'is-invalid': submitted && v.lastName.errors }" />
-                                            <div *ngIf="submitted && v.lastName.errors" class="invalid-feedback">
-                                                <div *ngIf="v.lastName.errors.required">lastName is required
+                                                [ngClass]="{ 'is-invalid': submitted && v.address.errors }" />
+                                            <div *ngIf="submitted && v.address.errors" class="invalid-feedback">
+                                                <div *ngIf="v.address.errors.required">lastName is required
                                                 </div>
                                             </div>
                                         </div>
@@ -1104,7 +1104,7 @@
 
                                         <div class="form-group col">
                                             <label class="label">Password</label>
-                                            <input type="text" formControlName="password" class="form-control control-form"
+                                            <input type="password" formControlName="password" class="form-control control-form"
                                                 [ngClass]="{ 'is-invalid': submitted && v.password.errors }" />
                                             <div *ngIf="submitted && v.password.errors" class="invalid-feedback">
                                                 <div *ngIf="v.password.errors.required">password is required</div>
@@ -1143,31 +1143,31 @@
                                                 <span>(Tick as Applicable)</span>
                                                 <div class="d-flex  justify-content-around">
                                                     <li>
-                                                        <input class="styled-checkbox" name="vehicle1" formControlName="auto"  type="checkbox" value="Wheeler-Auto">
+                                                        <input class="styled-checkbox" name="auto" formControlName="auto"  type="checkbox" value="Wheeler-Auto">
                                                         <label for="styled-checkbox-1">Wheeler Auto</label>
                                                     </li>
                                                     <li>
-                                                        <input class="styled-checkbox" name="vehicle2" formControlName="cargo" type="checkbox" value="Wheeler-Cargo" checked>
+                                                        <input class="styled-checkbox" name="cargo" formControlName="cargo" type="checkbox" value="Wheeler-Cargo" checked>
                                                         <label for="styled-checkbox-2"> Wheeler Cargo</label>
                                                     </li>
                                                 </div>
                                                 <div class="d-flex  justify-content-around">
                                                     <li>
-                                                        <input class="styled-checkbox" name="vehicle3" formControlName="light" value="Wheeler-Light" type="checkbox">
+                                                        <input class="styled-checkbox" name="light" formControlName="light" value="Wheeler-Light" type="checkbox">
                                                         <label for="styled-checkbox-1">Wheeler Light</label>
                                                     </li>
                                                     <li>
-                                                        <input class="styled-checkbox" name="vehicle4" formControlName="medium" value="Wheeler-Medium" type="checkbox" checked>
+                                                        <input class="styled-checkbox" name="medium" formControlName="medium" value="Wheeler-Medium" type="checkbox" checked>
                                                         <label for="styled-checkbox-2">Wheeler Medium</label>
                                                     </li>
                                                 </div>
                                                 <div class="d-flex  justify-content-around">
                                                     <li>
-                                                        <input class="styled-checkbox" name="vehicle4" formControlName="heavy" value="Wheeler-Heavy" type="checkbox">
+                                                        <input class="styled-checkbox" name="heavy" formControlName="heavy" value="Wheeler-Heavy" type="checkbox">
                                                         <label for="styled-checkbox-1">Wheeler Heavy</label>
                                                     </li>
                                                     <li>
-                                                        <input class="styled-checkbox" name="vehicle5" formControlName="van" value="Wheeler-Van" type="checkbox" checked>
+                                                        <input class="styled-checkbox" name="van" formControlName="van" value="Wheeler-Van" type="checkbox" checked>
                                                         <label for="styled-checkbox-2">School Van</label>
                                                     </li>
                                                 </div>
@@ -1246,9 +1246,9 @@
                                             <select formControlName="title" class="form-control control-form"
                                                 [ngClass]="{ 'is-invalid': submitted && c.title.errors }">
                                                 <option value=""></option>
-                                                <option value="Mr">Pune</option>
-                                                <option value="Mrs">Mumbai</option>
-                                                <option value="Miss">Bengaluru</option>
+                                                <option value="Pune">Pune</option>
+                                                <option value="Mumbai">Mumbai</option>
+                                                <option value="Bengaluru">Bengaluru</option>
 
                                             </select>
                                             <div *ngIf="submitted && c.title.errors" class="invalid-feedback">
@@ -1260,9 +1260,9 @@
                                             <select formControlName="dropdown" class="form-control control-form"
                                                 [ngClass]="{ 'is-invalid': submitted && c.dropdown.errors }">
                                                 <option value=""></option>
-                                                <option value="Mr">KOTHRUD/411038</option>
-                                                <option value="Mrs">BAVDHAN/411021</option>
-                                                <option value="Miss">VARJE/411058</option>
+                                                <option value="KOTHRUD/411038">KOTHRUD/411038</option>
+                                                <option value="BAVDHAN/411021">BAVDHAN/411021</option>
+                                                <option value="VARJE/411058">VARJE/411058</option>
 
                                             </select>
                                             <div *ngIf="submitted && c.dropdown.errors" class="invalid-feedback">
@@ -1356,6 +1356,16 @@
                                                     address</div>
                                             </div>
                                         </div>
+                                        
+                                        <div class="form-group col">
+                                            <label class="label">Password</label>
+                                            <input type="password" formControlName="password" class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && v.password.errors }" />
+                                            <div *ngIf="submitted && v.password.errors" class="invalid-feedback">
+                                                <div *ngIf="v.password.errors.required">password is required</div>
+                                            
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-row my-3">
                                         <div class="form-group col-6 file-area">
@@ -1417,9 +1427,9 @@
                                             <select formControlName="title" class="form-control control-form"
                                                 [ngClass]="{ 'is-invalid': submitted && a.title.errors }">
                                                 <option value=""></option>
-                                                <option value="Mr">Pune</option>
-                                                <option value="Mrs">Mumbai</option>
-                                                <option value="Miss">Bengaluru</option>
+                                                <option value="Pune">Pune</option>
+                                                <option value="Mumbai">Mumbai</option>
+                                                <option value="Bengaluru">Bengaluru</option>
 
                                             </select>
                                             <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
@@ -1431,9 +1441,9 @@
                                             <select formControlName="dropdown" class="form-control control-form"
                                                 [ngClass]="{ 'is-invalid': submitted && a.dropdown.errors }">
                                                 <option value=""></option>
-                                                <option value="Mr">KOTHRUD/411038</option>
-                                                <option value="Mrs">BAVDHAN/411021</option>
-                                                <option value="Miss">VARJE/411058</option>
+                                                <option value="KOTHRUD/411038">KOTHRUD/411038</option>
+                                                <option value="BAVDHAN/411021">BAVDHAN/411021</option>
+                                                <option value="VARJE/411058">VARJE/411058</option>
 
                                             </select>
                                             <div *ngIf="submitted && a.dropdown.errors" class="invalid-feedback">
@@ -1528,6 +1538,16 @@
                                                 <div *ngIf="a.email.errors.required">Email is required</div>
                                                 <div *ngIf="a.email.errors.email">Email must be a valid email
                                                     address</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col">
+                                            <label class="label">Password</label>
+                                            <input type="password" formControlName="password" class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && v.password.errors }" />
+                                            <div *ngIf="submitted && v.password.errors" class="invalid-feedback">
+                                                <div *ngIf="v.password.errors.required">password is required</div>
+                                            
                                             </div>
                                         </div>
                                     </div>
