@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Database, set, ref } from '@angular/fire/database';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { FirebaseService } from 'src/app/firebase.service';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import firebase from 'firebase/compat/app';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -16,7 +20,29 @@ export class SignupComponent implements OnInit {
   customrForm:any=FormGroup;
   agentForm:any=FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder, public database: Database,public fs:FirebaseService) {}
+
+
+  
+  adhardownloadURL!:Observable<string>;
+  panDownloadUrl!: Observable<string>;
+  driveDownloadUrl!: Observable<string>;
+
+
+   users:any;
+   userRef = this.db.object('User');
+
+   vehiclePanFile: any;
+   vehicleAdharFile: any;
+   vehicleDrivingLicenseFile:any;
+
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,  
+              private auth: AngularFireAuth,
+              private db: AngularFireDatabase,
+              private storage: AngularFireStorage,
+              public fs:FirebaseService) {
+
+              }
 
   //  Vehicles: Array<any> = [
   //   {"key": 'Wheeler-Auto',"value": 'Wheeler-Auto'},
@@ -39,6 +65,7 @@ export class SignupComponent implements OnInit {
       flat:['',Validators.required],
       address:['',Validators.required], 
       email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
       mobile: ['', Validators.required, ],
       acceptTerms: [false, Validators.requiredTrue]
   });
@@ -52,6 +79,7 @@ export class SignupComponent implements OnInit {
       flat:['',Validators.required],
       address:['',Validators.required], 
       email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
       mobile: ['', Validators.required, ],
       Vehicle:['',Validators.required],
       Vehiclenum:['',Validators.required],
@@ -113,52 +141,155 @@ export class SignupComponent implements OnInit {
     onSubmit() {
       this.submitted = true;
       console.log(this.customrForm.value);
-      // stop here if form is invalid 
-      if (this.customrForm.invalid) {
-        return;
-      }
-      // display form values on success
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.customrForm.value, null, 4))
-      this.fs.showData(this.customrForm).subscribe(e=>{
-        console.log(e);
-      },(error =>{
-        console.log(error);      
+      this.auth.createUserWithEmailAndPassword(this.customrForm.value.email, this.customrForm.value.password)
+      .then((user) =>{
+        console.log(user.user?.uid);
+        // User Id
+        let userObj = {
+          key: user.user?.uid,//To retrice with the help of key
+          email: this.customrForm.value.email,
+          password: this.customrForm.value.password,
+          title: this.customrForm.value.title,
+      dropdown: this.customrForm.value.dropdown,
+      initials: this.customrForm.value.initials,
+      lastName:this.customrForm.value.lastName,
+      Alternate:this.customrForm.value.Alternate,
+      flat:this.customrForm.value.flat,
+      address:this.customrForm.value.address, 
+      mobile: this.customrForm.value.mobile,
+      acceptTerms: this.customrForm.value.acceptTerms
+        }
+        //Craete a user Object
+        this.db.object(`Users/${user.user?.uid}`).set(userObj).then((data) =>{
+          console.log(data);
+          
+        }).catch((error) =>{
+          console.log(error);
+          
+        })
+
+      }).catch((error) =>{
+        console.log(error);
+        
       })
-      ) 
+      console.log("Submit done");
+      
+    } 
+
+    panEvent(event: any){
+      const file = event.target.files[0];
+    const filePath = `vehicle/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    // this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+        finalize(() => this.panDownloadUrl = fileRef.getDownloadURL() )
+     )
+    .subscribe()
+
+    }
+
+
+    adharEvent(event: any){
+      const file = event.target.files[0];
+      const filePath = `vehicle/${file.name}`;
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, file);
+  
+      // observe percentage changes
+      // this.uploadPercent = task.percentageChanges();
+      // get notified when the download URL is available
+      task.snapshotChanges().pipe(
+          finalize(() => this.adhardownloadURL = fileRef.getDownloadURL() )
+       )
+      .subscribe()
+      
+
+    }
+
+    driveEvent(event: any){
+      const file = event.target.files[0];
+      const filePath = `vehicle/${file.name}`;
+      const fileRef = this.storage.ref(filePath);
+      const task = this.storage.upload(filePath, file);
+  
+      // observe percentage changes
+      // this.uploadPercent = task.percentageChanges();
+      // get notified when the download URL is available
+      task.snapshotChanges().pipe(
+          finalize(() => this.driveDownloadUrl = fileRef.getDownloadURL() )
+       )
+      .subscribe()
+      
+
     }
 
 
 
-
-    onSubmits(){
+    onSubmitVehicleOwner(){
       this.submitted = true;
       console.log(this.vehicleOwnerForm.value);
-      if (this.vehicleOwnerForm.invalid) {
-        return;
-      }
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.vehicleOwnerForm.value, null, 4));
+    
+      this.auth.createUserWithEmailAndPassword(this.vehicleOwnerForm.value.email, this.vehicleOwnerForm.value.password)
+      .then((user) =>{
+        console.log(user.user?.uid);
+        // User Id
+        let userId = user.user?.uid;
+
+        let userObj = {
+          key: user.user?.uid,//To retrice with the help of key
+          email: this.vehicleOwnerForm.value.email,
+          password: this.vehicleOwnerForm.value.password,
+          title: this.vehicleOwnerForm.value.title,
+      dropdown: this.vehicleOwnerForm.value.dropdown,
+      initials: this.vehicleOwnerForm.value.initials,
+      lastName:this.vehicleOwnerForm.value.lastName,
+      Alternate:this.vehicleOwnerForm.value.Alternate,
+      flat:this.vehicleOwnerForm.value.flat,
+      address:this.vehicleOwnerForm.value.address, 
+      mobile: this.vehicleOwnerForm.value.mobile,
+      acceptTerms: this.vehicleOwnerForm.value.acceptTerms,
+      Vehiclenum: this.vehicleOwnerForm.value.Vehiclenum ,
+      Vehicle: this.vehicleOwnerForm.value.Vehicle,
+      panUrl: this.panDownloadUrl,
+      adharUrl: this.adhardownloadURL,
+      driveUrl: this.driveDownloadUrl
+        }
+        this.db.object(`VehicleOwner/${user.user?.uid}`).set(userObj).then((data) =>{
+          console.log(data);
+          
+        }).catch((error) =>{
+          console.log(error);
+          
+        })
+
+      }).catch((error) =>{
+        console.log(error);
+        
+      })
+      console.log("Submit done vehicle");
+
+      // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.vehicleOwnerForm.value, null, 4));
     }
 
 
 
-    onSubmitss(){
+    onSubmitCompany(){
       this.submitted = true;
       console.log(this.companyForm.value);
-      if (this.companyForm.invalid) {
-        return;
-      }
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.companyForm.value, null, 4));      
+  
+
     }
 
 
 
-    onSubmitsss(){
+    onSubmitAgent(){
       this.submitted = true;
       console.log(this.agentForm.value);
-      if (this.agentForm.invalid) {
-        return;
-      }
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.agentForm.value, null, 4));
+     
     }
 
 

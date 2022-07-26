@@ -1,3 +1,6 @@
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from './../environments/environment.prod';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -24,14 +27,10 @@ import { ApprovedComponent } from './pages/approved/approved.component';
 import { OrderConfirmatonComponent } from './pages/order-confirmaton/order-confirmaton.component';
 import { BillingSumaryComponent } from './pages/billing-sumary/billing-sumary.component';
 import { BillingSumaryAjentComponent } from './pages/billing-sumary-ajent/billing-sumary-ajent.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { LoginComponent } from './login/login.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,15 +61,13 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAnalytics(() => getAnalytics()),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
+  
   ],
   providers: [
-    ScreenTrackingService,UserTrackingService
   ],
   bootstrap: [AppComponent]
 })

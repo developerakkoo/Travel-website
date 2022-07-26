@@ -952,11 +952,23 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-row my-3">
+                                        <div class="form-group col">
+                                            <label class="label">Password</label>
+                                            <input id="email" type="text" formControlName="password"
+                                                class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                <div *ngIf="f.password.errors.required">Password is required</div>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="justify-content-center d-flex py-3 ">
                                         <button class=" Next btn-lg mr-3" id="btton" mat-raised-button color="primary"
                                             routerLink="../home">Back</button>
                                         <button class=" Next btn-lg" id="btton" mat-raised-button color="primary"
-                                            type="submit" routerLink="../our-services"
+                                            type="submit"
                                             (click)="onSubmit()">Register</button>
                                         <!-- routerLink="../our-services" -->
                                         <!-- <a type="button">Sign in</a> -->
@@ -1089,11 +1101,21 @@
                                                     address</div>
                                             </div>
                                         </div>
+
+                                        <div class="form-group col">
+                                            <label class="label">Password</label>
+                                            <input type="text" formControlName="password" class="form-control control-form"
+                                                [ngClass]="{ 'is-invalid': submitted && v.password.errors }" />
+                                            <div *ngIf="submitted && v.password.errors" class="invalid-feedback">
+                                                <div *ngIf="v.password.errors.required">password is required</div>
+                                            
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-row my-3">
                                         <div class="form-group col-6 file-area">
                                             <label for="images">Pan Card Images</label>
-                                            <input type="file" name="images" id="images" required="required"
+                                            <input (change)="panEvent($event)" type="file" name="images" id="images" required="required"
                                                 multiple="multiple" />
                                             <div class="file-dummy">
                                                 <div class="success">Great, your files are selected. Keep on.
@@ -1105,7 +1127,7 @@
 
                                         <div class="form-group col-6 file-area">
                                             <label for="images">Aadhar Card </label>
-                                            <input type="file" name="images"  id="images" required="required"
+                                            <input  (change)="adharEvent($event)" type="file" name="images"  id="images" required="required"
                                                 multiple="multiple" />
                                             <div class="file-dummy">
                                                 <div class="success">Great, your files are selected. Keep on.
@@ -1173,7 +1195,7 @@
                                     <div class="form-row my-3">
                                         <div class="form-group col-6 file-area">
                                             <label for="images">Driving License Images </label>
-                                            <input type="file" name="images"  id="images" required="required"
+                                            <input  (change)="driveEvent($event)" type="file" name="images"  id="images" required="required"
                                                 multiple="multiple" />
                                             <div class="file-dummy">
                                                 <div class="success">Great, your files are selected. Keep on.
@@ -1209,7 +1231,7 @@
                                         <button class=" Next btn-lg mr-3" id="btton" mat-raised-button color="primary"
                                             routerLink="../home">Back</button>
                                         <button class=" Next btn-lg" id="btton" mat-raised-button color="primary"
-                                            (click)="onSubmits()" routerLink="../our-services">Register</button>
+                                            (click)="onSubmitVehicleOwner()" routerLink="../our-services">Register</button>
                                     </div>
                                 </form>
                             </div>
@@ -1379,7 +1401,7 @@
                                         <button class=" Next btn-lg mr-3" id="btton" mat-raised-button color="primary"
                                             routerLink="../home">Back</button>
                                         <button class=" Next btn-lg" id="btton" mat-raised-button color="primary"
-                                            routerLink="../our-services" (click)="onSubmitss()">Register</button>
+                                            routerLink="../our-services" (click)="onSubmitCompany()">Register</button>
 
                                     </div>
                                 </form>
@@ -1554,7 +1576,7 @@
                                         <button class="btn-2 Next btn-lg mr-3" id="btton" mat-raised-button
                                             color="primary" routerLink="../home">Back</button>
                                         <button class=" Next btn-lg" id="btton" mat-raised-button color="primary"
-                                            routerLink="../our-services" (click)="onSubmitsss()">Register</button>
+                                            routerLink="../our-services" (click)="onSubmitAgent()">Register</button>
 
                                     </div>
                                 </form>

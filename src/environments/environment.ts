@@ -4,14 +4,14 @@
 
 export const environment = {
   firebase: {
-    apiKey: "AIzaSyA1eyn29_2s36SyOGxOX-5xi_EQ9snLAIA",
-    authDomain: "prototype-6023b.firebaseapp.com",
-    databaseURL: "https://prototype-6023b-default-rtdb.firebaseio.com",
-    projectId: "prototype-6023b",
-    storageBucket: "prototype-6023b.appspot.com",
-    messagingSenderId: "277141868123",
-    appId: "1:277141868123:web:ba8692d054082dd067f97e",
-    measurementId: "G-JYLC1GPYFG"
+    apiKey: "AIzaSyD_ii5QmDVpuG_dYLfvg9iXi1maFOL2q1o",
+  authDomain: "travel-project-7116a.firebaseapp.com",
+  databaseURL: "https://travel-project-7116a-default-rtdb.firebaseio.com",
+  projectId: "travel-project-7116a",
+  storageBucket: "travel-project-7116a.appspot.com",
+  messagingSenderId: "257797553926",
+  appId: "1:257797553926:web:0156df965579917d4fa887",
+  measurementId: "G-DM5J66BREN"
   },
   production: false
 };
