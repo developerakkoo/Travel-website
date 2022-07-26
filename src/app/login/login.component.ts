@@ -65,15 +65,13 @@ this.agentForm = this.formBuilder.group({
     this.submitted = true;
     console.log(this.customrForm.value);
     // stop here if form is invalid 
-    // if (this.customrForm.invalid) {
-    //   return;
-    // }
+  
     // display form values on success
     this.auth.signInWithEmailAndPassword(this.customrForm.value.email, this.customrForm.value.password)
     .then((user) =>{
       console.log(user);
       let userId = user.user?.uid;
-      this.router.navigate(['our-services', userId]);
+      // this.router.navigate(['our-services', userId]);
       //move to next page
       
     }).catch((error) =>{
@@ -84,31 +82,52 @@ this.agentForm = this.formBuilder.group({
 
   }
 
-  onSubmits(){
+  onSubmitVehicle(){
     this.submitted = true;
     console.log(this.vehicleOwnerForm.value);
-    if (this.vehicleOwnerForm.invalid) {
-      return;
-    }
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.vehicleOwnerForm.value, null, 4));
+    this.auth.signInWithEmailAndPassword(this.vehicleOwnerForm.value.email, this.vehicleOwnerForm.value.password)
+    .then((user) =>{
+      console.log(user);
+      let userId = user.user?.uid;
+      // this.router.navigate(['our-services', userId]);
+      //move to next page
+      
+    }).catch((error) =>{
+      console.log(error);
+      
+    })
   }
 
-  onSubmitss(){
+  onSubmitCompany(){
     this.submitted = true;
     console.log(this.companyForm.value);
-    if (this.companyForm.invalid) {
-      return;
-    }
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.companyForm.value, null, 4));      
+    this.auth.signInWithEmailAndPassword(this.companyForm.value.email, this.companyForm.value.password)
+    .then((user) =>{
+      console.log(user);
+      let userId = user.user?.uid;
+      // this.router.navigate(['our-services', userId]);
+      //move to next page
+      
+    }).catch((error) =>{
+      console.log(error);
+      
+    })      
   }
 
-  onSubmitsss(){
+  onSubmitAgent(){
     this.submitted = true;
     console.log(this.agentForm.value);
-    if (this.agentForm.invalid) {
-      return;
-    }
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.agentForm.value, null, 4));
+    this.auth.signInWithEmailAndPassword(this.agentForm.value.email, this.agentForm.value.password)
+    .then((user) =>{
+      console.log(user);
+      let userId = user.user?.uid;
+      // this.router.navigate(['our-services', userId]);
+      //move to next page
+      
+    }).catch((error) =>{
+      console.log(error);
+      
+    })
   }
 
   

@@ -16,24 +16,30 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 export class SignupComponent implements OnInit {
   // registerForm:any= FormGroup;
   companyForm:any=FormGroup;
-  vehicleOwnerForm:any=FormGroup;
   customrForm:any=FormGroup;
   agentForm:any=FormGroup;
   submitted = false;
-
-
   
+  
+  // VEHICLE FILES
+  vehicleOwnerForm:any=FormGroup;
   adhardownloadURL!:Observable<string>;
   panDownloadUrl!: Observable<string>;
   driveDownloadUrl!: Observable<string>;
+  vehiclephotoUrl!: Observable<string>;
+  vehicleRcCopyUrl!: Observable<string>;
+  
+  vehiclePanFile: any;
+  vehicleAdharFile: any;
+  vehicleDrivingLicenseFile:any;
+  // VEHICE FILES END
 
-
-   users:any;
-   userRef = this.db.object('User');
-
-   vehiclePanFile: any;
-   vehicleAdharFile: any;
-   vehicleDrivingLicenseFile:any;
+  // COMPANY FILES
+  adharDownloadUrlCompany: any;
+  panDownloadUrlCompany: any;
+  adharDownloadUrlAgent: any;
+  panDownloadUrlAgent: any;
+  //COMPANY FILES END
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,  
@@ -44,14 +50,6 @@ export class SignupComponent implements OnInit {
 
               }
 
-  //  Vehicles: Array<any> = [
-  //   {"key": 'Wheeler-Auto',"value": 'Wheeler-Auto'},
-  //   {"key": 'Wheeler-Cargo', "value": 'Wheeler-Cargo'},
-  //   {"key": 'Wheeler-Light', "value": 'Wheeler-Light'},
-  //   {"key": 'Wheeler-Medium', "value": 'Wheeler-Medium'},
-  //   {"key": 'Wheeler-Heavy', "value": 'Wheeler-Heavy'},
-  //   {"key": 'Wheeler-Van', "value": 'Wheeler-Van'}
-  //  ];
 
   result:string = '';
 
@@ -180,7 +178,7 @@ export class SignupComponent implements OnInit {
 
     panEvent(event: any){
       const file = event.target.files[0];
-    const filePath = `vehicle/${file.name}`;
+    const filePath = `vehicle/${Date.now().toString()}/${file.name}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
 
@@ -188,16 +186,65 @@ export class SignupComponent implements OnInit {
     // this.uploadPercent = task.percentageChanges();
     // get notified when the download URL is available
     task.snapshotChanges().pipe(
-        finalize(() => this.panDownloadUrl = fileRef.getDownloadURL() )
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) =>{
+            console.log(`pan url:- ${url}`)
+            this.panDownloadUrl = url;
+          })
+        } )
      )
     .subscribe()
 
     }
 
+    vehicleRcFileEvent(event: any){
+      const file = event.target.files[0];
+    const filePath = `vehicle/${Date.now().toString()}/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    // this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) =>{
+          console.log(`vehicle url:- ${url}`)
+          this.vehicleRcCopyUrl = url;
+        })
+      } )
+   )
+  .subscribe()
+
+    }
+
+    profileImageEvent(event: any){
+      const file: File = event.target.files[0];
+    const filePath = `vehicle/${Date.now().toString()}/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    // this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) =>{
+          console.log(`photo url:- ${url}`)
+          this.vehiclephotoUrl = url;
+        })
+      } )
+   )
+  .subscribe()
+
+    }
+
+    
+
 
     adharEvent(event: any){
       const file = event.target.files[0];
-      const filePath = `vehicle/${file.name}`;
+      const filePath = `vehicle/${Date.now().toString()}/${file.name}`;
       const fileRef = this.storage.ref(filePath);
       const task = this.storage.upload(filePath, file);
   
@@ -205,14 +252,19 @@ export class SignupComponent implements OnInit {
       // this.uploadPercent = task.percentageChanges();
       // get notified when the download URL is available
       task.snapshotChanges().pipe(
-          finalize(() => this.adhardownloadURL = fileRef.getDownloadURL() )
-       )
-      .subscribe()
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) =>{
+            console.log(`adhar url:- ${url}`)
+            this.adhardownloadURL = url;
+          })
+        } )
+     )
+    .subscribe()
     }
 
     driveEvent(event: any){
       const file = event.target.files[0];
-      const filePath = `vehicle/${file.name}`;
+      const filePath = `vehicle/${Date.now().toString()}/${file.name}`;
       const fileRef = this.storage.ref(filePath);
       const task = this.storage.upload(filePath, file);
   
@@ -220,9 +272,14 @@ export class SignupComponent implements OnInit {
       // this.uploadPercent = task.percentageChanges();
       // get notified when the download URL is available
       task.snapshotChanges().pipe(
-          finalize(() => this.driveDownloadUrl = fileRef.getDownloadURL() )
-       )
-      .subscribe()
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) =>{
+            console.log(`license url:- ${url}`)
+            this.vehicleDrivingLicenseFile = url;
+          })
+        } )
+     )
+    .subscribe()
       
 
     }
@@ -254,9 +311,12 @@ export class SignupComponent implements OnInit {
       acceptTerms: this.vehicleOwnerForm.value.acceptTerms,
       Vehiclenum: this.vehicleOwnerForm.value.Vehiclenum ,
       Vehicle: this.vehicleOwnerForm.value.Vehicle,
-      // panUrl: this.panDownloadUrl,
-      // adharUrl: this.adhardownloadURL,
-      // driveUrl: this.driveDownloadUrl
+      panUrl: this.panDownloadUrl,
+      adharUrl: this.adhardownloadURL,
+      rcFileUrl: this.vehicleRcCopyUrl,
+      licenseUrl: this.vehicleDrivingLicenseFile,
+      photoUrl: this.vehiclephotoUrl,
+
         }
         this.db.object(`Vehicle/${user.user?.uid}`).set(userObj).then((data) =>{
           console.log(data);
@@ -303,7 +363,9 @@ export class SignupComponent implements OnInit {
       address:this.companyForm.value.address, 
       mobile: this.companyForm.value.mobile,
       gst:this.companyForm.value.gst,
-      acceptTerms: this.companyForm.value.acceptTerms
+      acceptTerms: this.companyForm.value.acceptTerms,
+      adharUrl: this.adharDownloadUrlCompany,
+      panUrl: this.panDownloadUrlCompany
         }
         this.db.object(`Company/${user.user?.uid}`).set(userObj).then((data) =>{
           console.log(data);
@@ -320,6 +382,49 @@ export class SignupComponent implements OnInit {
 
     }
 
+
+    panEventCompany(event: any){
+      const file = event.target.files[0];
+    const filePath = `company/${Date.now().toString()}/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    // this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) =>{
+            console.log(`pan url:- ${url}`)
+            this.panDownloadUrlCompany = url;
+          })
+        } )
+     )
+    .subscribe()
+
+    }
+
+
+    adharEventCompany(event: any){
+      const file = event.target.files[0];
+    const filePath = `company/${Date.now().toString()}/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    // this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) =>{
+            console.log(`pan url:- ${url}`)
+            this.adharDownloadUrlCompany = url;
+          })
+        } )
+     )
+    .subscribe()
+
+    }
 
     onSubmitAgent(){
       this.submitted = true;
@@ -343,7 +448,9 @@ export class SignupComponent implements OnInit {
       address:this.agentForm.value.address, 
       mobile: this.agentForm.value.mobile,
       ofaddress: this.agentForm.value.ofaddress,
-      acceptTerms: this.agentForm.value.acceptTerms
+      acceptTerms: this.agentForm.value.acceptTerms,
+      panUrl: this.panDownloadUrlAgent,
+      adharUrl: this.adharDownloadUrlAgent
         }
         this.db.object(`Agent/${user.user?.uid}`).set(userObj).then((data) =>{
           console.log(data);
@@ -360,6 +467,51 @@ export class SignupComponent implements OnInit {
     }
 
 
+    adharEventAgent(event: any){
+      const file = event.target.files[0];
+    const filePath = `agent/${Date.now().toString()}/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    // this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) =>{
+            console.log(`adhar url:- ${url}`)
+            this.adharDownloadUrlAgent = url;
+          })
+        } )
+     )
+    .subscribe()
+
+    }
+
+    panEventAgent(event: any){
+      const file = event.target.files[0];
+    const filePath = `agent/${Date.now().toString()}/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    // this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) =>{
+            console.log(`pan url:- ${url}`)
+            this.panDownloadUrlAgent = url;
+          })
+        } )
+     )
+    .subscribe()
+
+    }
+
+
+
+    
     onReset() {
         this.submitted = false;
         this.customrForm.reset();
