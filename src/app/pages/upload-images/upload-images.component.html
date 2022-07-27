@@ -12,12 +12,7 @@
               <div class="card-body">
                 <div class="Border_over">
                     <form [formGroup]="myForm" (ngSubmit)="submit()">
-          
-                       
-                        
-
-
-                        <div class="form-row">
+                     <div class="form-row">
                             <div class=" form-group  col-3">  <label for="file">Images 1</label></div>
                            
                             <div class=" form-group col-9">
@@ -35,20 +30,7 @@
                             <div *ngIf="f.file.errors && f.file.errors.required">File is required.</div>
                         </div>
 
-                        <div class="form-row">
-                            <div class=" form-group  col-3">  <label for="file">Images 2</label></div>
-                           
-                            <div class=" form-group col-9">
-                            <input
-                                formControlName="file"
-                                id="file"
-                                type="file"
-                                class="form-control"
-                                multiple=""
-                                (change)="onFileChange($event)">
-                                </div>
-                            
-                        </div>
+                    
                  
                         <img *ngFor='let url of images'  [src]="url" height="150" width="200px" style="margin: 3px;"> <br/>
                             

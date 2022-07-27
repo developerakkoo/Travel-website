@@ -31,7 +31,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { LoginComponent } from './login/login.component';
 import { IonicStorageModule } from '@ionic/storage-angular';
-
+// import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +65,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    // OwlDateTimeModule,
+    // OwlNativeDateTimeModule,
     AngularFireStorageModule,
     IonicStorageModule.forRoot({
       name: "TravelDB"

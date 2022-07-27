@@ -12,42 +12,21 @@
                         <thead class="tab">
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Details</th>
-                            <th scope="col">Sender</th>
-                            <th scope="col">Recever</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col"></th>
                           </tr>
                         </thead>
                         <tbody  style="color:#fff ;">
                           <tr>
                             <th scope="row">1</th>
-                            <td>Mobile </td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
+                            <td><input type="date" class="Input" id="date" name="date" [(ngModel)]="date"> </td>
+                            <td><input type="time" class="Input"id="time" name="time" [(ngModel)]="time" ></td>
+                            <td></td>
+                             
                           </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Name</td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>City</td>
-                            <td><input type="text" class="Input"> </td>
-                            <td><input type="text" class="Input"></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>Building Name/Apartment/Lane No </td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">5</th>
-                            <td>Door No /Flat No</td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
-                          </tr>
+                         
+                      
                         </tbody>
                       </table>
                       
@@ -57,9 +36,10 @@
                 
               </div>
               <div class="justify-content-center d-flex py-3 ">
+                <!-- <button type="button" (click)="clickme()">Clickme</button> -->
                 <button class=" Next btn-lg mr-3" id="btton" mat-raised-button color="primary" routerLink="../sender" >Back</button>
-                <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" routerLink="../summary" >Next</button>
-              <!-- <a class="Forget_psd px-2" routerLink="/auth/registration">Next </a> -->
+                <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" (click)="clickme()" routerLink="../summary" >Next</button>
+
             
             </div>
             </div>
