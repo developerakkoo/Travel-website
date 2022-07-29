@@ -1,25 +1,26 @@
 <section class="background-radial-gradient overflow-hidden">
-    <div class="container-fluid box">
-      <div class="row ">
-        <div class=" my-4">
-            <h1 class="text-center">Order Summary </h1>
-            <h4  class="text-center">Pune</h4>
-        </div>
-        
+  <div class="container-fluid box">
+    <div class="row ">
+      <div class=" my-4">
+        <h1 class="text-center">Order Summary </h1>
+        <h4 class="text-center">Pune</h4>
+      </div>
+
       <div class="row  justify-content-center py-2">
         <div class="col-xl-3 col-sm-12 col-12">
         </div>
         <div class="col-xl-3 col-sm-12 col-12">
-          <div class="card cardss">
+          <div class="card cardss" *ngFor="let img of images">
             <div class="card-content">
               <div class="card-body">
                 <div class="media d-flex">
                   <div class="media-body text-left">
-                    <h5 class="success">Above  100kg Uupto 500kg</h5>
+                    <h5 class="success">Above 100kg Uupto 500kg</h5>
                     <span> (HouseHold Items)</span>
                   </div>
                   <div class="" style="display: contents;">
-                    <img src="../../../assets/Advertising Material.png" class="card-img-top" alt="..." style="    width: 42%;">
+                    <img [src]="img" class="card-img-top" alt="..."
+                      style="    width: 42%;">
                   </div>
                 </div>
               </div>
@@ -29,109 +30,82 @@
         <div class="col-xl-3 col-sm-12 col-12">
         </div>
       </div>
-      <div class="">
-        <h4  class="text-center">or</h4>
-    </div>
-      <div class="row  justify-content-center py-4">
-        <div class="col-xl-3 col-sm-12 col-12">
-        </div>
-        <div class="col-xl-3 col-sm-12 col-12">
-          <div class="card cardss">
-            <div class="card-content">
-              <div class="card-body">
-                <div class="media d-flex">
-                  <div class="media-body text-left">
-                    <h5 class="success">Above  100kg Uupto 500kg</h5>
-                    <span> (HouseHold Items)</span>
-                  </div>
-                  <div class="" style="display: contents;">
-                    <img src="../../../assets/Advertising Material.png" class="card-img-top" alt="..." style="    width: 42%;">
-             
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-12 col-12">
-        </div>
-      
-      </div>
-     <div class="row">
+   
+      <div class="row">
         <div>
-            <p class="text-center">Helper Required</p>
-            <p class="text-center">Packing Required</p>
+          <p class="text-center">Helper Required</p>
+          <p class="text-center">Packing Required</p>
         </div>
-     </div>
+      </div>
 
-        <div class="d-flex justify-content-center Login_rows">
-          <div class="col-12 col-sm-8 col-md-6 col-lg-6">
-           
-                    <table class="table my-3">
-                        <thead class="tab" style="color:#fff ;">
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Details</th>
-                            <th scope="col">Sender</th>
-                            <th scope="col">Recever</th>
-                          </tr>
-                        </thead>
-                        <tbody style="color:#fff ;" >
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mobile </td>
-                            <td><input type="text" class="Input" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Name</td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>City</td>
-                            <td><input type="text" class="Input"> </td>
-                            <td><input type="text" class="Input"></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>Building Name/Apartment/Lane No </td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"> </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">5</th>
-                            <td>Door No /Flat No</td>
-                            <td><input type="text" class="Input"></td>
-                            <td><input type="text" class="Input"></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      
-                      
-                </div>
-  
-                
-              </div>
-              <div class="row my-2">
-                <div>
-                    <h5 class="text-center">Vehicle Required At Time</h5>
-                    <p class="text-center">Today / 1:30 PM</p>
-                </div>
-             </div>
-             
+      <div class="d-flex justify-content-center Login_rows">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-6">
 
-              <div class="justify-content-center d-flex py-3 ">
-                <button class=" Next preview btn-lg mr-3" id="btton" mat-raised-button color="primary"routerLink="../vehicle-required" >Preview & Edit</button>
-                <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" routerLink="../enquiry" >Submit</button>
-            </div>
-            </div>
-          </div>
-          
-
-  </section>
+          <table class="table my-3">
+            <thead class="tab" style="color:#fff ;">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Details</th>
+                <th scope="col">Sender</th>
+                <th scope="col">Recever</th>
+              </tr>
+            </thead>
+            <tbody style="color:#fff ;">
+              <tr>
+                <th scope="row">1</th>
+                <td>Mobile </td>
+                <td><input [value]="user.mobile" type="text" class="Input" class="Input"></td>
+                <td><input [value]="receiver.mobile" type="text" class="Input"></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Name</td>
+                <td><input [value]="user.initials" type="text" class="Input"></td>
+                <td><input [value]="receiver.name" type="text" class="Input"></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>City</td>
+                <td><input [value]="user.title" type="text" class="Input"> </td>
+                <td><input  [value]="receiver.city" type="text" class="Input"></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Building Name/Apartment/Lane No </td>
+                <td><input [value]="user.address" type="text" class="Input"></td>
+                <td><input [value]="receiver.address" type="text" class="Input"> </td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Door No /Flat No</td>
+                <td><input [value]="user.flat" type="text" class="Input"></td>
+                <td><input [value]="receiver.flat" type="text" class="Input"></td>
+              </tr>
+            </tbody>
+          </table>
 
 
- 
+        </div>
+
+
+      </div>
+      <div class="row my-2">
+        <div>
+          <h5 class="text-center">Vehicle Required At Time</h5>
+          <p class="text-center">{{date || "No Date"}} / {{time || "No Time"}}</p>
+        </div>
+      </div>
+
+
+      <div class="justify-content-center d-flex py-3 ">
+        <button class=" Next preview btn-lg mr-3" id="btton" mat-raised-button color="primary"
+          routerLink="../vehicle-required">Preview & Edit</button>
+          <!-- routerLink="../enquiry" -->
+        <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" (click)="submit()"
+         >Submit</button>
+      </div>
+    </div>
+  </div>
+
+
+</section>

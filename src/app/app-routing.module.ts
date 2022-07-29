@@ -1,3 +1,4 @@
+import { EnquiryListComponent } from './pages/enquiry-list/enquiry-list.component';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
@@ -46,7 +47,10 @@ const routes: Routes = [
     path:'quotations',component:QuotationsComponent
   },
   {
-    path:'enquiry',component:EnquiryComponent
+    path:'enquiry/:key',component:EnquiryComponent
+  },
+  {
+    path:'enquiry-list',component:EnquiryListComponent
   },
   {
     path:'fuel-cost',component:FuelCostComponent

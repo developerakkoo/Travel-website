@@ -19,21 +19,12 @@
                     <h5 class="success">Images 1</h5>
                     
                   </div>
-                  <div class="" style="display: contents;">
-                    <img src="../../../assets/Advertising Material.png" class="card-img-top" alt="..." style="    width: 42%;">
+                  <div class="" style="display: contents;" *ngFor="let img of images">
+                    <img [src]="img" class="card-img-top" alt="..." style="    width: 42%;">
              
                   </div>
                 </div>
-                <div class="media d-flex my-3">
-                  <div class="media-body text-left">
-                    <h5 class="success">Images 2</h5>
-                    
-                  </div>
-                  <div class="" style="display: contents;">
-                    <img src="../../../assets/Advertising Material.png" class="card-img-top" alt="..." style="    width: 42%;">
-             
-                  </div>
-                </div>
+               
               </div>
             </div>
           </div>
@@ -59,12 +50,12 @@
               <tbody style="color: #fff;">
                 <tr>
                   <th scope="row">Pick Up</th>
-                  <td colspan="2">Pune Katraj, Lane-1,Amar Heighs ,Ganesh</td>
+                  <td colspan="2">{{user.address}}</td>
                  
                 </tr>
                 <tr>
                   <th scope="row">Drop :</th>
-                  <td>Bengaluru Peenya Jindal Inds</td>
+                  <td> {{receiver.address}} </td>
                   
                 </tr>
                 <tr>
@@ -79,7 +70,7 @@
                 </tr>
                 <tr>
                   <th scope="row">Disptach</th>
-                  <td colspan="2">Today / 1:30 Pm</td>
+                  <td colspan="2">{{date}} / {{time}} </td>
                   
                 </tr>
               </tbody>
@@ -111,42 +102,42 @@
               <tbody style="color:#fff ;">
                 <tr>
                   <th scope="row">Vehicle Number</th>
-                  <td colspan="2"><input type="text" class="Input"></td>
+                  <td colspan="2"><input [(ngModel)]="vehicleNo" type="text" class="Input"></td>
                  
                 </tr>
                 <tr>
                   <th scope="row">Driver Mobile </th>
-                  <td><input type="text" class="Input"></td>
+                  <td><input type="text" [(ngModel)]="driverMobile" class="Input"></td>
                   
                 </tr>
                 <tr>
                   <th scope="row">Freight Charges </th>
-                  <td colspan="2"><input type="text" class="Input"></td>
+                  <td colspan="2"><input [(ngModel)]="freightCharges" type="text" class="Input"></td>
                   
                 </tr>
                 <tr>
                   <th scope="row">Advance</th>
-                  <td colspan="2"><input type="text" class="Input"></td>
+                  <td colspan="2"><input [(ngModel)]="advance" type="text" class="Input"></td>
                   
                 </tr>
                 <tr>
                   <th scope="row">Helper</th>
-                  <td colspan="2"><input type="text" class="Input"></td>
+                  <td colspan="2"><input [(ngModel)]="helperCharges" type="text" class="Input"></td>
                   
                 </tr>
                 <tr>
                   <th scope="row">Packing</th>
-                  <td colspan="2"><input type="text" class="Input"></td>
+                  <td colspan="2"><input [(ngModel)]="packageCharges" type="text" class="Input"></td>
                   
                 </tr>
                 <tr>
                   <th scope="row">Waiting Per Hour</th>
-                  <td colspan="2"><input type="text" class="Input"></td>
+                  <td colspan="2"><input [(ngModel)]="waititngPerHour" type="text" class="Input"></td>
                   
                 </tr>
                 <tr>
                   <th scope="row">Cancellation</th>
-                  <td colspan="2"><input type="text" class="Input"></td>
+                  <td colspan="2"><input [(ngModel)]="cancellation" type="text" class="Input"></td>
                   
                 </tr>
                 <tr>
@@ -154,12 +145,11 @@
                   <th scope="row">Payment</th>
                   <td colspan="2">
                     <div class="form-group col">
-                       <select formControlName="title" class="form-control Input">
-                          <option value=""></option>
-                          <option value="Mr">Mr</option>
-                          <option value="Mrs">Mrs</option>
-                          <option value="Miss">Miss</option>
-                          <option value="Ms">Ms</option>
+                       <select [(ngModel)]="paymentType" class="form-control Input">
+                         
+                          <option value="cash">Cash</option>
+                          <option value="gpay">Google Pay</option>
+                          <option value="phonepay">Phone Pay</option>
                       </select>
                      </div>
                   </td>
@@ -183,7 +173,8 @@
 
               <div class="justify-content-center d-flex py-3 ">
                 <button class=" Next preview btn-lg mr-3" id="btton" mat-raised-button color="primary" routerLink="../summary" >Preview & Edit</button>
-                <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" routerLink="../fuel-cost" >Submit</button>
+                <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" (click)="submit()" >Submit</button>
+                <!-- routerLink="../fuel-cost" -->
             </div>
             </div>
           </div>

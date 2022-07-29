@@ -32,8 +32,10 @@
             ],
             "styles": [
               "node_modules/font-awesome/css/font-awesome.min.css",
+
               "src/styles.scss"
             ],
+           
             "scripts": []
           },
           "configurations": {
@@ -118,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "prototype"
+  "defaultProject": "prototype",
+  "cli": {
+    "analytics": false
+  }
 }

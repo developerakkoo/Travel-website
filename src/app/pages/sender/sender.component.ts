@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/compat/database';
 import { HttpClient } from '@angular/common/http';
@@ -26,6 +27,7 @@ export class SenderComponent implements OnInit {
 
   constructor(private data: DataService,
               private db: AngularFireDatabase,
+              private router: Router,
               private http: HttpClient) {
              
                }
@@ -70,6 +72,7 @@ export class SenderComponent implements OnInit {
       receiver: receiverObj
     }).then((success) =>{
       console.log(success);
+      this.router.navigate(['vehicle-required']);
       
     }).catch((error) =>{
       console.log(error);

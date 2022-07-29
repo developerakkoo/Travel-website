@@ -25,28 +25,31 @@
               <tr>
                 <th scope="row">Service Provider</th>
                 <td>Owner/Agent/Shipping Company Mob</td>
-                <td>Drv Mob</td>
-                <td>Frt</td>
-                <td>Adv</td>
-                <td>Hep</td>
-                <td>Pkg</td>
-                <td>Cancl</td>
+                <td>Driver Mobile</td>
+                <td>Freight Charges/td>
+                <td>Advance</td>
+                <td>Helper Charges</td>
+                <td>Packing Charges</td>
+                <td>Cancellation Charges</td>
                 <td>Time</td>
                 <td>Pay</td>
                 <td>Select</td>
                 
               </tr>
-              <th scope="row">Rajendre/Owner</th>
-              <td>8852369741</td>
-              <td>225369874</td>
-              <td>700</td>
-              <td>400</td>
-              <td>300</td>
-              <td>500</td>
-              <td>50</td>
-              <td>Today/1:30</td>
-              <td>Cash/Paytm</td>
-              <td><input type="radio"></td>
+              <tr *ngFor="let item of quotes |async">
+
+                <th  scope="row"> {{item.serviceProvider}} </th>
+                <td>{{item.serviceMobile}}</td>
+                <td>{{item.driverMobile}}</td>
+                <td>{{item.freightCharges | currency:"INR"}}</td>
+                <td>{{item.advance  | currency:"INR"}}</td>
+                <td>{{item.helperCharges  | currency:"INR"}}</td>
+                <td>{{item.packageCharges  | currency:"INR"}}</td>
+                <td>{{item.cancellation  | currency:"INR"}}</td>
+                <td>{{time }} / {{date}}</td>
+                <td>{{item.paymentType}}</td>
+                <td><input [value]="item.key" (change)="select($event, item)" type="checkbox"></td>
+              </tr>
               
               
             </tbody>
@@ -54,7 +57,8 @@
 
           <div class="justify-content-center d-flex py-3 ">
             <button class=" Next btn-lg mr-3" id="btton" mat-raised-button color="primary" routerLink="../fuel-cost" >Back</button>
-            <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" routerLink="../approved" >Submit</button>
+            <button class=" Next btn-lg" id="btton" mat-raised-button color="primary" (click)="submit() " >Submit</button>
+            <!-- routerLink="../approved" -->
         </div>
         <div class=" my-4">
             <h1 class="text-center">Order Summary </h1>
@@ -68,53 +72,26 @@
         <div class="col-xl-3 col-sm-12 col-12">
         </div>
         <div class="col-xl-3 col-sm-12 col-12">
-          <div class="card cardss">
+          <div *ngFor="let img of images"  class="card cardss">
             <div class="card-content">
               <div class="card-body">
                 <div class="media d-flex">
-                  <div class="media-body text-left">
+                  <!-- <div class="media-body text-left">
                     <h5 class="success">Above  100kg Uupto 500kg</h5>
                     <span> (HouseHold Items)</span>
-                  </div>
+                  </div> -->
                   <div class="" style="display: contents;">
-                    <img src="../../../assets/Advertising Material.png" class="card-img-top" alt="..." style="    width: 42%;">
+                    <img [src]="img" class="card-img-top" alt="..." style="    width: 42%;">
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-12 col-12">
-        </div>
+       
       </div>
-      <div class="">
-        <h4  class="text-center">or</h4>
-    </div>
-      <div class="row  justify-content-center py-4">
-        <div class="col-xl-3 col-sm-12 col-12">
-        </div>
-        <div class="col-xl-3 col-sm-12 col-12">
-          <div class="card cardss">
-            <div class="card-content">
-              <div class="card-body">
-                <div class="media d-flex">
-                  <div class="media-body text-left">
-                    <h5 class="success">Above  100kg Uupto 500kg</h5>
-                    <span> (HouseHold Items)</span>
-                  </div>
-                  <div class="" style="display: contents;">
-                    <img src="../../../assets/Advertising Material.png" class="card-img-top" alt="..." style="    width: 42%;">
-             
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-12 col-12">
-        </div>
-      
-      </div>
+    
+ 
      <div class="row">
         <div>
             <p class="text-center">Helper Required</p>
@@ -138,32 +115,32 @@
               <tr>
                 
                 <td>Mobile </td>
-                <td>8165495109</td>
-                <td>9965432103</td>
+                <td>{{user.Alternate}}</td>
+                <td> {{receiver.mobile}} </td>
               </tr>
               <tr>
               
                 <td>Name</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <td>{{user.initials}}</td>
+                <td> {{receiver.name}} </td>
               </tr>
               <tr>
               
                 <td>City</td>
-                <td>Pune </td>
-                <td>Bengaluru</td>
+                <td>{{user.title}} </td>
+                <td> {{receiver.city}} </td>
               </tr>
               <tr>
                
                 <td>Building Name/Apartment/Lane No </td>
-                <td>Kumar Paisr</td>
-                <td>Amar Heights Nelmangala </td>
+                <td> {{user.address}} </td>
+                <td> {{receiver.address}} </td>
               </tr>
               <tr>
                
                 <td>Door No /Flat No</td>
-                <td>Door 34</td>
-                <td>Door 18</td>
+                <td>{{user.flat}}</td>
+                <td> {{receiver.flat}} </td>
               </tr>
               <tr>
                 <th scope="row">Goods Are For Sale (Invoice Copy Enclosed)</th>

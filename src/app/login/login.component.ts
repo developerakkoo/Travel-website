@@ -74,6 +74,8 @@ this.agentForm = this.formBuilder.group({
       console.log(user);
       let userId = user.user?.uid;
       const userKey = await this.data.set("userId", userId);
+      await this.data.set("userType", "Users");
+
       if(userKey){
         this.router.navigate(['our-services', userId]);
 
@@ -96,8 +98,9 @@ this.agentForm = this.formBuilder.group({
       console.log(user);
       let userId = user.user?.uid;
       const userKey = await this.data.set("userId", userId);
+      await this.data.set("userType", "Vehicle");
 
-      // this.router.navigate(['our-services', userId]);
+      this.router.navigate(['enquiry-list']);
       //move to next page
       
     }).catch((error) =>{
@@ -114,6 +117,9 @@ this.agentForm = this.formBuilder.group({
       console.log(user);
       let userId = user.user?.uid;
       const userKey = await this.data.set("userId", userId);
+      await this.data.set("userType", "Company");
+
+      this.router.navigate(['enquiry-list']);
 
       // this.router.navigate(['our-services', userId]);
       //move to next page
@@ -132,6 +138,9 @@ this.agentForm = this.formBuilder.group({
       console.log(user);
       let userId = user.user?.uid;
       const userKey = await this.data.set("userId", userId);
+      await this.data.set("userType", "Agent");
+
+      this.router.navigate(['enquiry-list']);
 
       // this.router.navigate(['our-services', userId]);
       //move to next page
