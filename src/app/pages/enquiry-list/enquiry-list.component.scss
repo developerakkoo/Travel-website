@@ -1,0 +1,27 @@
+* {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+
+ul li {
+    list-style: none;
+    padding: 2%;
+    border: 1px solid rgb(122, 122, 122);
+    margin-top: 2%;
+    text-align: center;
+    
+
+}
+
+// @media only screen and (max-width: 786px) {
+//     background-radial-gradient{ height: auto;}
+// }
+
+@media screen and (min-device-width: 481px) and (max-device-width: 768px) { 
+    background-radial-gradient{ height: 100vh;}
+}
