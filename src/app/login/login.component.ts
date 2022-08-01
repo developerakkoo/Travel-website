@@ -64,6 +64,8 @@ this.agentForm = this.formBuilder.group({
   }
 
   async onLoginCustomer() {
+    //show loading
+
     this.submitted = true;
     console.log(this.customrForm.value);
     // stop here if form is invalid 
@@ -76,6 +78,7 @@ this.agentForm = this.formBuilder.group({
       const userKey = await this.data.set("userId", userId);
       await this.data.set("userType", "Users");
 
+      //stop loading
       if(userKey){
         this.router.navigate(['our-services', userId]);
 
@@ -84,6 +87,7 @@ this.agentForm = this.formBuilder.group({
       
     }).catch((error) =>{
       console.log(error);
+      //stop loading
       
     })
      

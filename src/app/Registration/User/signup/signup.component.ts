@@ -427,6 +427,7 @@ export class SignupComponent implements OnInit {
     }
 
     onSubmitAgent(){
+      //show loading
       this.submitted = true;
       console.log(this.agentForm.value);
       this.auth.createUserWithEmailAndPassword(this.agentForm.value.email, this.agentForm.value.password)
@@ -454,12 +455,13 @@ export class SignupComponent implements OnInit {
         }
         this.db.object(`Agent/${user.user?.uid}`).set(userObj).then((data) =>{
           console.log(data);
-          
+          //stop loading
         }).catch((error) =>{
           console.log(error);
         })
       }).catch((error)=>{
         console.log(error);
+        //stop loading
       })
   
       console.log("Submit done Agent");
