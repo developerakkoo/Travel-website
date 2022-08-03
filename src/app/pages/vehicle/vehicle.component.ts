@@ -23,22 +23,28 @@ export class VehicleComponent implements OnInit {
   console.log(`User Id in Vehicle Component ${this.userId}`);
   
   }
+
+
   onChange(event: any){
     console.log(event.target.value);
     this.vehicleType = event.target.value;
-    
   }
+
+
 
   next(){
     console.log(this.vehicleType);
-    this.db.object(`order/${this.userId}/vehicletype`).set({
+    this.db
+    .object(`order/${this.userId}/vehicletype`)
+    .set({
       vehicletype: this.vehicleType
-    }).then((vehicle) =>{
+    })
+    .then((vehicle) =>
+    {
       console.log(vehicle);
-      
+      this.router.navigate(['sender']);
     }).catch((error) =>{
       console.log(error);
-      
     })
     
   }
