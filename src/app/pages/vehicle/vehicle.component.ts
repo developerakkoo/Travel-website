@@ -43,10 +43,7 @@ export class VehicleComponent implements OnInit {
     {
       console.log(vehicle);
       this.router.navigate(['sender']);
-<<<<<<< HEAD
       
-=======
->>>>>>> 495c23f6a941a81baaa39abcd7b14f2b1719fd1f
     }).catch((error) =>{
       console.log(error);
     })
