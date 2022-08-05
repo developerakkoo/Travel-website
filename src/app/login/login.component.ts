@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FirebaseService } from '../firebase.service';
+import { AlertService } from 'ngx-alerts';
 
 
 @Component({
@@ -77,7 +78,6 @@ this.agentForm = this.formBuilder.group({
       let userId = user.user?.uid;
       const userKey = await this.data.set("userId", userId);
       await this.data.set("userType", "Users");
-
       //stop loading
       if(userKey){
         this.router.navigate(['our-services', userId]);

@@ -113,15 +113,15 @@ let orderCreated = false;
     console.log("move to slect products");
  
 
-      this.router.navigate(['upload-images'])
-
+    this.router.navigate(['upload-images'])
+    
     
   }
-
+  
   if(this.isSelectVehicleForMeChecked){
     console.log("move to select vehivle page");
-  
-      this.router.navigate(['vehicle'])
+    this.router.navigate(['vehicle'])
+    
 
   
     

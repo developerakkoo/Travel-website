@@ -100,13 +100,12 @@ export class SummaryComponent implements OnInit {
         receiver: this.receiver,
         time: this.time,
         date: this.date,
-      
-      
         images: this.images
       }
 
     ]
-    this.db.list(`enquiry`).push(data).then((value) =>{
+    this.db.list(`enquiry`).push(data).then((value) =>
+    {
       console.log(value);
       this.router.navigate(['quotations']);
       

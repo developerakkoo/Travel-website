@@ -35,6 +35,7 @@ export class VehicleComponent implements OnInit {
       vehicletype: this.vehicleType
     }).then((vehicle) =>{
       console.log(vehicle);
+      this.router.navigate(['sender']);
       
     }).catch((error) =>{
       console.log(error);

@@ -108,6 +108,7 @@ export class EnquiryComponent implements OnInit {
     this.db.list(`orderQuote`).push(obj)
     .then((value) =>{
       console.log(value);
+      this.router.navigate(['approved-list'])
       
     }).catch((error) =>{
       console.log(error);

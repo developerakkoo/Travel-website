@@ -17,6 +17,7 @@ import { OrderConfirmatonComponent } from './pages/order-confirmaton/order-confi
 import { BillingSumaryComponent } from './pages/billing-sumary/billing-sumary.component';
 import { BillingSumaryAjentComponent } from './pages/billing-sumary-ajent/billing-sumary-ajent.component';
 import { LoginComponent } from './login/login.component';
+import { ApprovedListComponent } from './pages/approved-list/approved-list.component';
 const routes: Routes = [
   {
     path:'',component:HomeComponent,
@@ -56,7 +57,10 @@ const routes: Routes = [
     path:'fuel-cost',component:FuelCostComponent
   },
   {
-    path:'approved',component:ApprovedComponent
+    path:'approved/:id',component:ApprovedComponent
+  },
+  {
+    path:'approved-list',component:ApprovedListComponent
   },
   {
     path:'order-confirmaton',component:OrderConfirmatonComponent

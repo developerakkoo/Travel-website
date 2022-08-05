@@ -1,1 +1,16 @@
-<p>approved-list works!</p>
+<section class="background-radial-gradient" *ngIf="items">
+    <div class="container-fluid ">
+      <div class="row d-flex justify-content-center pb-3">
+        <div class="d-flex justify-content-center Login_rows mt-5 pt-2 pb-5 ">
+          <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+ <ul>
+    <li *ngFor="let item of items | async" (click)="openApproved(item)"> Date:- {{item.value.date | json}} and Time: {{item.value.time | json}}</li> 
+ </ul>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+ 
+ 
+ 

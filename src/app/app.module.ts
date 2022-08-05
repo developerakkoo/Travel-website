@@ -34,7 +34,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { EnquiryListComponent } from './pages/enquiry-list/enquiry-list.component';
 import { ApprovedListComponent } from './pages/approved-list/approved-list.component';
 
-
+// Import BrowserAnimationsModule
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { ApprovedListComponent } from './pages/approved-list/approved-list.compo
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -75,7 +77,7 @@ import { ApprovedListComponent } from './pages/approved-list/approved-list.compo
     // OwlDateTimeModule,
     // OwlNativeDateTimeModule,
     AngularFireStorageModule,
-    
+
     IonicStorageModule.forRoot({
       name: "TravelDB"
     }),
